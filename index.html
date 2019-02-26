@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Project Spiderweb</title>
+    <meta name="generator" content="Project Spiderweb">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Project Spiderweb">
+
+    <!--
+      The `<base>` tag below is present to support two advanced deployment options:
+      1) Differential serving. 2) Serving from a non-root path.
+
+      Instead of manually editing the `<base>` tag yourself, you should generally either:
+      a) Add a `basePath` property to the build configuration in your `polymer.json`.
+      b) Use the `--base-path` command-line option for `polymer build`.
+    -->
+    <base href="/">
+
+    <link rel="icon" href="images/favicon.ico">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#8d6e63">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Project Spiderweb">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Project Spiderweb">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="310x310" href="images/manifest/icon-310x310.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#8d6e63">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Performance tip: hint to the browser to start the handshake for the fonts site -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <script>
+      // Load and register pre-caching Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('service-worker.js', {
+            scope: '/',
+          });
+        });
+      }
+
+      // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
+      // https://github.com/reactjs/redux/issues/2907
+      window.process = { env: { NODE_ENV: 'production' } };
+    </script>
+
+    <!-- Add any global styles for body, document, etc. -->
+    <style>
+      /* To get the font-face, visit the font `href` given by fonts.google.com for the font.  For example,
+         Roboto's embed link is: `<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">`
+         The URL will navigate to a page with several font-faces. We choose `latin` only since for now this website
+         will only be in English and it looks the download fast.
+      /* latin */
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        /* The browser draws the text immediately in the fallback font if the font
+           isn't loaded, then swaps it with the webfont when it eventually loads
+           See: https://developers.google.com/web/updates/2016/02/font-display
+        */
+        font-display: swap;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        background: #FFF;
+        display: flex;
+        /* This is a font-stack that tries to use the system-default sans-serifs first */
+        font-family: 'Roboto',Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        min-height: 100vh;
+        height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+  </head>
+  <body>
+    <sp-root></sp-root>
+    <noscript>
+      Please enable JavaScript to view this website.
+    </noscript>
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- Built with love using PWA Starter Kit -->
+    <script type="module" src="src/components/sp-root.js" crossorigin></script>
+  </body>
+</html>

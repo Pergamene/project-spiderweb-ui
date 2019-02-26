@@ -1,0 +1,21 @@
+{
+  "name": "Project Spiderweb",
+  "short_name": "Project Spiderweb",
+  "description": "Project Spiderweb",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#8d6e63",
+  "background_color": "#8d6e63",
+  "icons": [
+    {
+      "src": "images/manifest/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "images/manifest/icon-310x310.png",
+      "sizes": "310x310",
+      "type": "image/png"
+    }
+  ]
+}

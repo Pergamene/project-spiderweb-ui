@@ -1,0 +1,38 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/components/sp-root.js",
+  "sources": [
+    "images/**/*",
+    "_redirects",
+    "src/**/*",
+    "internal_comps/**/*"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    "push-manifest.json"
+  ],
+  "builds": [
+    {
+      "name": "es6-bundled",
+      "browserCapabilities": [
+        "es2015"
+      ],
+      "js": {
+        "compile": "es2015",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    }
+  ],
+  "moduleResolution": "node",
+  "npm": true
+}
