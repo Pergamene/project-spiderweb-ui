@@ -16,8 +16,8 @@ import { SpSharedStyles } from '../../internal_comps/sp_shared/src/entities/sp-s
 class SpRoot extends connect(localStore)(LitElement) {
   render() {
     return html`
+    ${SpSharedStyles}
     <style>
-      ${SpSharedStyles}
       :host {
         display: block;
       }
