@@ -17,7 +17,6 @@ class SpPage extends LitElement {
       </style>
       <sp-page-view></sp-page-view>
       <sp-page-header></sp-page-header>
-      <sp-page-footer></sp-page-footer>
     `;
   }
 
