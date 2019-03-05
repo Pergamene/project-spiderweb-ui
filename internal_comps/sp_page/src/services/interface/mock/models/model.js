@@ -3,8 +3,9 @@ export const Model = _getInitialModel();
 function _getInitialModel() {
   return {
     pages: {
-      '1': {
-        title: 'This is a test'
+      'PG_1': {
+        title: 'Talendor, the Ancient Resting Place',
+        summary: 'Long ago, the Talendorians lived together in harmony. Then, everything changed when the Fire Plane attacked.'
       }
     }
   };
@@ -12,6 +13,6 @@ function _getInitialModel() {
 
 export function initializeModel() {
   let model = _getInitialModel();
-  Model.pages = [...model.pages];
+  Model.pages = {...model.pages};
 }
 
