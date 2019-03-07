@@ -4,8 +4,13 @@ export class SpPageTitle extends LitElement {
   render() {
     return html`
       <style>
+        :host {
+          line-height: 58px;
+          font-size: 24px;
+          font-weight: 700;
+        }
       </style>
-      <h1>${this.page.title}</h1>
+      ${this.page.title}
     `
   }
 
