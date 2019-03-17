@@ -16,8 +16,8 @@ import { SpSharedStyles } from '../../internal_comps/sp_shared/src/entities/sp-s
 class SpRoot extends connect(localStore)(LitElement) {
   render() {
     return html`
+    ${SpSharedStyles}
     <style>
-      ${SpSharedStyles}
       :host {
         display: block;
       }
@@ -37,7 +37,7 @@ class SpRoot extends connect(localStore)(LitElement) {
     switch (this._page) {
       case ROUTES.PAGES.PAGE:
         return html`<sp-page></sp-page>`;
-      default:
+    default:
         return html`<sp-404></sp-404>`;
     }
   }

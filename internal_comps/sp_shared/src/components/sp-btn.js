@@ -1,10 +1,12 @@
 import { LitElement, html } from '@polymer/lit-element';
 import { Log } from 'interface-handler/src/logger.js';
 import { BTN_TYPES } from '../entities/sp-btn-types.js';
+import { SpBtnBaseStyles } from '../entities/sp-btn-base-styles.js';
 
 class SpBtn extends LitElement {
   render() {
     return html`
+      ${SpBtnBaseStyles}
       <style>
         .click-propagation-prevention {
           display: inline;

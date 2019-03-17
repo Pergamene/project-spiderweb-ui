@@ -1,7 +1,9 @@
 export const APP_COLORS = {
   NEAR_BLACK: '--sp_shared-near-black',
+  NEAR_BLACK_FOCUS: '--sp_shared-near-black-focus',
   NEAR_WHITE: '--sp_shared-near-white',
   BASE_WHITE: '--sp_shared-base-white',
+  BASE_WHITE_FOCUS: '--sp_shared-base-white-focus',
   NEAR_WHITE_BORDER: '--sp_shared-near-white-border',
   OFF_BLACK: '--sp_shared-off-black',
   HINT_GRAY: '--sp_shared-hint-gray',

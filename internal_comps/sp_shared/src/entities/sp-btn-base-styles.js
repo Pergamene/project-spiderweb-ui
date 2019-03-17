@@ -40,6 +40,10 @@ export const SpBtnBaseStyles = html`
     --sp_btn-disabled-background-color: #BDBDBD;
   }
 
+  button:focus {
+    outline: 0;
+  }
+
   button.sp-btn {
     border: none;
     line-height: 40px;
