@@ -19,7 +19,7 @@ export const setPage = (page) => _action(SET_PAGE, {page});
 export const RETRIEVE_PAGE = _createRequestRaw('RETRIEVE_PAGE');
 export const retrievePage = (pageId) => (dispatch) => {
   getPage(pageId).then(page => {
-    dispatch(setPage(page.page));
+    dispatch(setPage(page));
   }, err => {
     console.error(err);
   });

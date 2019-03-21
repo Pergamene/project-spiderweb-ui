@@ -134,14 +134,14 @@ function _getInitialModel() {
                 link: 'https://www.google.com/someimage'
               },
               {
-                type: 'quotes',
+                type: 'quote',
                 value: 'quoted text'
               },
               {
                 type: 'hr'
               },
               {
-                type: 'quotes',
+                type: 'quote',
                 value: 'or quoted paragraphs\nif it\'s more than one line'
               }
             ]
