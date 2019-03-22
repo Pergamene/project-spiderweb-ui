@@ -12,6 +12,7 @@ import { LOCALE_EN } from '../../internal_comps/sp_locale/src/entities/en.js';
 
 import './sp-404.js';
 import { SpSharedStyles } from '../../internal_comps/sp_shared/src/entities/sp-shared-styles.js';
+import { setDefaults } from '../../internal_comps/sp_shared/src/services/interface-state-defaults.js';
 
 class SpRoot extends connect(localStore)(LitElement) {
   render() {
@@ -31,6 +32,11 @@ class SpRoot extends connect(localStore)(LitElement) {
     return {
       _page: { type: String }
     }
+  }
+
+  constructor() {
+    super();
+    setDefaults();
   }
 
   _activePageHtml() {

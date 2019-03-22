@@ -1,15 +1,15 @@
-import { INTERFACE, interfaceState, invalidInterfaceState } from 'interface-handler/src/interface-state.js';
+import { INTERFACE_STATE, InterfaceState } from 'interface-handler/src/interface-state.js';
 
 import * as CallHttp from './http/page.js';
 import * as CallMock from './mock/page.js';
 
 export const getPage = (pageId) => {
-  switch (interfaceState()) {
-    case INTERFACE.HTTP:
+  switch (InterfaceState.get()) {
+    case INTERFACE_STATE.HTTP:
       return CallHttp.getPage(pageId);
-    case INTERFACE.MOCK:
+    case INTERFACE_STATE.MOCK:
       return CallMock.getPage(pageId);
     default:
-      return invalidInterfaceState();
+      return InterfaceState.invalid();
   }
 };

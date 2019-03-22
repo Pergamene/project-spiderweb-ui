@@ -7,9 +7,7 @@ export const getPage = (pageId) => {
     Mock.debugRequest(getPage, pageId);
     PageController.initializePageModel(pageId);
     setTimeout(() => {
-      let response = {
-        page: PageController.getPage(pageId)
-      };
+      let response = PageController.getPage(pageId);
       Mock.debugSuccessfulResponse(getPage, response);
       resolve(Mock.prepareResponse(response));
     }, CALLBACK_TIME.POST);

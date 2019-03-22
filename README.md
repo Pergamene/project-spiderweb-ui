@@ -29,6 +29,24 @@ npm start
 
 To run the tests, you can run `npm run test`.  However, for the alpha stages we are not focused on automated testing.
 
+#### Mock Endpoints
+
+You can alternatively mock the call to the backend.  By default, the UI expects there to be a locally
+running instance of the [Service](https://github.com/Pergamene/project-spiderweb-service).  You can change
+the line:
+
+```
+InterfaceState.set(INTERFACE_STATE.HTTP);
+```
+
+to:
+
+```
+InterfaceState.set(INTERFACE_STATE.MOCK);
+```
+
+In `internal_comps/sp_shared/src/services/interface-state-defaults.js` to switch to mock interfacing.
+
 ### Build
 
 To build the app, run `npm run build`. This will create a `build` folder that has all the minified 

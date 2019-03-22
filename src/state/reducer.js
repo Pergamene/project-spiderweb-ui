@@ -5,7 +5,7 @@ import { ROUTES } from '../entities/root.js';
 const INITIAL_STATE = {
   route: {
     activePage: ROUTES.PAGES.GAME,
-    pageId: 'PG_1'
+    pageId: 'PG_123456789012'
   },
   network: {
     offline: false

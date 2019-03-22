@@ -3,7 +3,7 @@ export const Model = _getInitialModel();
 function _getInitialModel() {
   return {
     pages: {
-      'PG_1': {
+      'PG_123456789012': {
         title: 'Talendor, the Ancient Resting Place',
         summary: 'Long ago, the Talendorians lived together in harmony. Then, everything changed when the Fire Plane attacked.',
         properties: [
@@ -134,14 +134,14 @@ function _getInitialModel() {
                 link: 'https://www.google.com/someimage'
               },
               {
-                type: 'quotes',
+                type: 'quote',
                 value: 'quoted text'
               },
               {
                 type: 'hr'
               },
               {
-                type: 'quotes',
+                type: 'quote',
                 value: 'or quoted paragraphs\nif it\'s more than one line'
               }
             ]
