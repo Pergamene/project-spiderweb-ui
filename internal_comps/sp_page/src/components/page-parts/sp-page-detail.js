@@ -1,4 +1,5 @@
 import { html, LitElement } from '@polymer/lit-element';
+import { SpPageStyles } from '../sp-page-styles';
 
 import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 
@@ -7,7 +8,12 @@ import '../partitions/sp-page-partition.js';
 export class SpPageDetail extends LitElement {
   render() {
     return html`
+      ${SpPageStyles}
       <style>
+        :host {
+          display: flex;
+        }
+
         h1 {
           font-size: 18px;
           color: var(${APP_COLORS.HINT_GRAY});
@@ -22,9 +28,14 @@ export class SpPageDetail extends LitElement {
           background-color: var(${APP_COLORS.NEAR_WHITE});
         }
       </style>
-      <h1>${this.detail.title}</h1>
-      <p class="summary">${this.detail.summary}</p>
-      ${this.detail.partitions.map(partition => this._getPartitionHtml(partition))}
+      <div edit-pane>
+        <sp-edit-btn></sp-edit-btn>
+      </div>
+      <div page-pane>
+        <h1>${this.detail.title}</h1>
+        <p class="summary">${this.detail.summary}</p>
+        ${this.detail.partitions.map(partition => this._getPartitionHtml(partition))}
+      </div>
     `
   }
 

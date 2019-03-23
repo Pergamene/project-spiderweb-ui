@@ -1,8 +1,7 @@
 import { html, LitElement } from '@polymer/lit-element';
-import { NAV } from '../sp-page-styles';
+import { NAV, CONTENT_PANE, EDIT_PANE, PAGE_PANE } from '../sp-page-styles';
 
-import '../page-parts/sp-page-title.js';
-import '../page-parts/sp-page-summary.js';
+import '../page-parts/sp-page-overview.js';
 import '../page-parts/sp-page-properties.js';
 import '../page-parts/sp-page-details.js';
 
@@ -20,14 +19,14 @@ export class SpPageView extends LitElement {
 
         .left-column {
           display: flex;
-          width: 200px;
+          width: var(${CONTENT_PANE.WIDTH});
           height: calc(100vh - var(${NAV.HEADER.HEIGHT}) - var(${NAV.FOOTER.HEIGHT}));
           flex-direction: column;
         }
 
         .right-column {
           display: flex;
-          width: 600px;
+          max-width: calc(var(${PAGE_PANE.WIDTH}) + var(${EDIT_PANE.WIDTH}));
           flex-direction: column;
           padding: 0 20px;
         }
@@ -36,8 +35,7 @@ export class SpPageView extends LitElement {
         
       </div>
       <div class="right-column">
-        <sp-page-title .page="${this.page}"></sp-page-title>
-        <sp-page-summary .page="${this.page}"></sp-page-summary>
+        <sp-page-overview .page="${this.page}"></sp-page-overview>
         <sp-page-properties .page="${this.page}"></sp-page-properties>
         <sp-page-details .page="${this.page}"></sp-page-details>
         <sp-page-relations .page="${this.page}"></sp-page-relations>
