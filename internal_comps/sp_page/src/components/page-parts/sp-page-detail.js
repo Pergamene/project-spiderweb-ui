@@ -24,13 +24,11 @@ export class SpPageDetail extends LitElement {
           line-height: 24px;
           border-left: 2px solid var(${APP_COLORS.OFF_BLACK});
           padding: 5px 10px;
-          width: 100%;
+          width: calc(100% - 2px - 10px - 10px);
           background-color: var(${APP_COLORS.NEAR_WHITE});
         }
       </style>
-      <div edit-pane>
-        <sp-edit-btn></sp-edit-btn>
-      </div>
+      <div edit-pane></div>
       <div page-pane>
         <h1>${this.detail.title}</h1>
         <p class="summary">${this.detail.summary}</p>

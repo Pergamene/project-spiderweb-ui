@@ -4,6 +4,7 @@ import { localStore } from '../state/store.js';
 
 import './page-sections/sp-page-header.js';
 import './page-sections/sp-page-view.js';
+import './page-action/sp-page-action-footer.js';
 import { SpPageStyles } from './sp-page-styles.js';
 import { retrievePage } from '../state/action.js';
 
@@ -20,6 +21,7 @@ class SpPage extends connect(localStore)(LitElement) {
       
       ${this._getPageViewHtml()}
       <sp-page-header></sp-page-header>
+      <sp-page-action-footer></sp-page-action-footer>
     `;
   }
 

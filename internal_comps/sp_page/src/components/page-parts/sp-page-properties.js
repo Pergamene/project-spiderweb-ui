@@ -21,9 +21,7 @@ export class SpPageProperties extends LitElement {
           margin-top: 10px;
         }
       </style>
-      <div edit-pane>
-        <sp-edit-btn></sp-edit-btn>
-      </div>
+      <div edit-pane></div>
       <div page-pane>
         ${this.page.properties.map(property => this._getPropertyHtml(property))}
       </div>
