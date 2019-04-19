@@ -10,7 +10,8 @@ export function setDefaults() {
 
 export function setInterfaceStateDefaults() {
   // @DEFAULT: Interface state
-  InterfaceState.set(INTERFACE_STATE.HTTP);
+  // InterfaceState.set(INTERFACE_STATE.HTTP);
+  InterfaceState.set(INTERFACE_STATE.MOCK);
   Log.debug(`Set Interface State to: ${InterfaceState.get()}`);
 }
 
