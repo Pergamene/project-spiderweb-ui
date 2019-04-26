@@ -13,6 +13,7 @@ export const SpSharedStyles = html`
     --sp_shared-off-black: #525456;
     --sp_shared-hint-gray: #798183;
     --sp_shared-link-blue: #5472D3;
+    --sp_shared-link-hover: #0d47a1;
     --sp_shared-link-visited: #002171;
     --sp_shared-relation-pink: #BC477B;
     --sp_shared-relation-visited: #560027;

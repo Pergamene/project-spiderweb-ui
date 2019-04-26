@@ -142,12 +142,12 @@ function _getInitialModel() {
               {
                 type: 'image',
                 altText: 'alt text for an image',
-                link: 'https://www.google.com/someimage'
+                link: 'https://image.shutterstock.com/image-illustration/chinese-style-fantasy-scenes3d-rendering-260nw-647884516.jpg'
               },
               {
                 type: 'image',
                 altText: null,
-                link: 'https://www.google.com/someimage'
+                link: 'https://image.shutterstock.com/image-photo/warrior-man-standing-on-fantasy-260nw-1069598228.jpg'
               },
               {
                 type: 'quote',
@@ -172,4 +172,3 @@ export function initializeModel() {
   let model = _getInitialModel();
   Model.pages = {...model.pages};
 }
-

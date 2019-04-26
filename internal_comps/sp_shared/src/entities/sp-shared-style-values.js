@@ -8,6 +8,7 @@ export const APP_COLORS = {
   OFF_BLACK: '--sp_shared-off-black',
   HINT_GRAY: '--sp_shared-hint-gray',
   LINK_BLUE: '--sp_shared-link-blue',
+  LINK_HOVER: '--sp_shared-link-hover',
   LINK_VISITED: '--sp_shared-link-visited',
   RELATION_PINK: '--sp_shared-relation-pink',
   RELATION_VISITED: '--sp_shared-realtion-visited',

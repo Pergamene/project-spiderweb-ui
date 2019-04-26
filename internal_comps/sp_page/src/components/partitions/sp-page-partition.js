@@ -11,18 +11,21 @@ export class SpPagePartition extends LitElement {
           font-size: 24px;
           font-weight: 700;
           color: var(${APP_COLORS.OFF_BLACK});
+          padding-bottom: 10px;
         }
 
         .h2 {
           font-size: 22px;
           font-weight: 700;
           color: var(${APP_COLORS.OFF_BLACK});
+          padding-bottom: 10px;
         }
 
         .h3 {
           font-size: 20px;
           font-weight: 700;
           color: var(${APP_COLORS.OFF_BLACK});
+          padding-bottom: 10px;
         }
 
         .h4 {
@@ -30,6 +33,7 @@ export class SpPagePartition extends LitElement {
           font-weight: 700;
           font-style: italic;
           color: var(${APP_COLORS.HINT_GRAY});
+          padding-bottom: 10px;
         }
 
         .h5 {
@@ -37,6 +41,7 @@ export class SpPagePartition extends LitElement {
           font-weight: 700;
           font-style: italic;
           color: var(${APP_COLORS.HINT_GRAY});
+          padding-bottom: 10px;
         }
 
         .h6 {
@@ -44,6 +49,7 @@ export class SpPagePartition extends LitElement {
           font-weight: 700;
           font-style: italic;
           color: var(${APP_COLORS.HINT_GRAY});
+          padding-bottom: 10px;
         }
 
         .quote {
@@ -54,7 +60,16 @@ export class SpPagePartition extends LitElement {
           width: 100%;
           background-color: var(${APP_COLORS.NEAR_WHITE});
         }
-        /*ul, ol, image, hr*/
+
+        img {
+          padding: 10px;
+        }
+
+        hr {
+          border-color: var(${APP_COLORS.OFF_BLACK});
+          border-width: .5px;
+        }
+        /*ul, ol, image, p*/
 
         .outer-partition {
           margin: 10px 0;
@@ -70,16 +85,46 @@ export class SpPagePartition extends LitElement {
     }
   }
 
+  // p, quote
   _getPartitionHtml() {
+    //@TODO: Remove
+    let part = this.partition;
+    let parts = this.partition.partitions;
+    // debugger;
+
+
     if (this.partition.partitions) {
       return html`<sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition>`;
-    } /*else {
-      let class = this.partition.type;
-      switch (class) {
-
-      }
-    }*/
-    return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;    
+    }
+    let partitionClass = this.partition.type;
+    switch (partitionClass) {
+      case 'ul':
+        return html`
+          <ul>
+            ${this.partition.items.map((item) => html`
+            <li>
+              <sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${[item]}"></sp-inner-partition>
+            </li>
+            `)}
+          </ul>
+        `;
+      case 'ol':
+        return html`
+          <ol>
+            ${this.partition.items.map((item) => html`
+            <li>
+              <sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${[item]}"></sp-inner-partition>
+            </li>
+            `)}
+          </ol>
+        `;
+      case 'image':
+        return html`<img class="${this.partition.type} outer-partition" src="${this.partition.link}" alt="${this.partition.altText ? this.partition.altText : ""}">`;
+      case 'hr':
+        return html`<hr class="${this.partition.type} outer-partition">`;
+      default:
+        return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;
+    } 
   }
 }
 
