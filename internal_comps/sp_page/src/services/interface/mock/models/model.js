@@ -32,6 +32,22 @@ function _getInitialModel() {
                 value: 'This is an h2 header'
               },
               {
+                type: 'h3',
+                value: 'This is an h3 header'
+              },
+              {
+                type: 'h4',
+                value: 'This is an h4 header'
+              },
+              {
+                type: 'h5',
+                value: 'This is an h5 header'
+              },
+              {
+                type: 'h6',
+                value: 'This is an h6 header'
+              },
+              {
                 type: 'p',
                 partitions: [
                   {

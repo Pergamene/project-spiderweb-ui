@@ -1,5 +1,7 @@
 import { html, LitElement } from '@polymer/lit-element';
 
+import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values';
+
 export class SpInnerPartition extends LitElement {
   render() {
     return html`
@@ -15,6 +17,18 @@ export class SpInnerPartition extends LitElement {
         .italics {
           font-style: italic;
         }
+
+        .link {
+          text-decoration: underline;
+          color: var(${APP_COLORS.LINK_BLUE});
+        }
+
+        .relation {
+          text-decoration: underline;
+          color: var(${APP_COLORS.RELATION_PINK});
+        }
+        /*color*/
+
       </style>
       ${this.partitions.map(partition => this._getPartitionHtml(partition))}      
     `

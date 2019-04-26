@@ -12,6 +12,10 @@ export const SpSharedStyles = html`
     --sp_shared-near-white-border: #E7EBEF;
     --sp_shared-off-black: #525456;
     --sp_shared-hint-gray: #798183;
+    --sp_shared-link-blue: #5472D3;
+    --sp_shared-link-visited: #002171;
+    --sp_shared-relation-pink: #BC477B;
+    --sp_shared-relation-visited: #560027;
     
     --sp_shared-overlay-black: rgba(0, 0, 0, 0.5);
     --sp_shared-overlay-white: rgba(255, 255, 255, 0.8);
