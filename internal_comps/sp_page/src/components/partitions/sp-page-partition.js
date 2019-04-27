@@ -92,7 +92,7 @@ export class SpPagePartition extends LitElement {
       case 'image':
         return html`<img class="${this.partition.type} outer-partition" src="${this.partition.link}" alt="${this.partition.altText ? this.partition.altText : ""}">`;
       case 'hr':
-        return html`<hr class="${this.partition.type} outer-partition">`;
+        return html`<hr>`;
       default:
         return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;
     } 
