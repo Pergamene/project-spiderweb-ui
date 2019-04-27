@@ -57,11 +57,23 @@ export class SpPagePartition extends LitElement {
           line-height: 24px;
           border-left: 2px solid var(${APP_COLORS.OFF_BLACK});
           padding: 5px 10px;
-          width: 100%;
+          background-size: 100%;
           background-color: var(${APP_COLORS.NEAR_WHITE});
+          display: block;
+        }
+
+        figure {
+          text-align: center;
+        }
+
+        figcaption {
+          font-size: 11px;
+          font-variant: small-caps;
+          font-weight: bolder;
+          color: var(${APP_COLORS.IMAGE_CAPTION});
         }
         
-        /*ul, ol, image, p*/
+        /*ul, ol, p*/
 
         .outer-partition {
           margin: 10px 0;
@@ -80,26 +92,47 @@ export class SpPagePartition extends LitElement {
   //@TODO: split p partitions on \n
 
   _getPartitionHtml() {
-    if (this.partition.partitions) {
-      return html`<sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition>`;
-    }
+    // if (this.partition.partitions) {
+    //   return html`<sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition>`;
+    // }
     let partitionClass = this.partition.type;
     switch (partitionClass) {
       case 'ul':
-        return html`<ul>${this._getListItemHtml(this.partition)}</ul>`;
+        return html`<ul>${this._getListItemHtml()}</ul>`;
       case 'ol':
-        return html`<ol>${this._getListItemHtml(this.partition)}</ol>`;
+        return html`<ol>${this._getListItemHtml()}</ol>`;
       case 'image':
-        return html`<img class="${this.partition.type} outer-partition" src="${this.partition.link}" alt="${this.partition.altText ? this.partition.altText : ""}">`;
+        return html`<figure class="outer-partition">${this._getImageHtml()}</figure>`;
       case 'hr':
         return html`<hr>`;
-      default:
-        return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;
+      case 'p':
+        return html`<p><sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition></p>`;
+      case 'quote':
+        return this._getQuoteHtml();
+      // default:
+      //   return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;
     } 
   }
 
-  _getListItemHtml(partition) {
+  _getListItemHtml() {
     return html`${this.partition.items.map((item) => html`<li><sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${[item]}"></sp-inner-partition></li>`)}`;
+  }
+
+  _getImageHtml() {
+    if (!this.partition.altText) {
+      return html`<img class="${this.partition.type}" src="${this.partition.link}" alt="">`;
+    } else {
+      return html`<img class="${this.partition.type}" src="${this.partition.link}" alt="${this.partition.altText}"><figcaption>${this.partition.altText}</figcaption>`;
+    }
+  }
+
+  _getQuoteHtml() {
+    if(this.partition.partitions) {
+      return html`<sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition>`;
+    } else {
+      let lines = this.partition.value.split('\n');
+      return html`<div class="${this.partition.type} outer-partition">${lines.map((line) => html`${line}<br>`)}</div>`;
+    }
   }
 }
 

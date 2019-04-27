@@ -64,12 +64,21 @@ export class SpInnerPartition extends LitElement {
         return html`<a href="${partition.link}">${partition.value}</a>`;
       // case 'relation':
       //   return html`<sp-relation-link class="${partition.type}" .relation="${partition.relation}"></sp-relation-link>`;
-      // case 'text': 
-
       case 'color':
         return html`<span class="${partition.type}" style="color:${partition.color}">${partition.value}</span>`
       default: 
-        return html`<span class="${partition.type}">${partition.value}</span>`;
+        return html`<span class="${partition.type}">${this._replaceNewlineWithBreak(partition)}</span>`;
+    }
+  }
+
+  _replaceNewlineWithBreak(partition) {
+    let lines = partition.value.split('\n');
+    if (lines.length > 1) {
+      lines = lines.filter(line => line !== '');
+      return html`<span class="${partition.type}">${lines.map((line) => html`${line}<br>`)}</span>`;
+    }
+    else {
+      return html`${partition.value}`;
     }
   }
 }

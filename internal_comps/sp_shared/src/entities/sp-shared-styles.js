@@ -17,6 +17,7 @@ export const SpSharedStyles = html`
     --sp_shared-link-visited: #002171;
     --sp_shared-relation-pink: #BC477B;
     --sp_shared-relation-visited: #560027;
+    --sp_shared-image-caption: #666666;
     
     --sp_shared-overlay-black: rgba(0, 0, 0, 0.5);
     --sp_shared-overlay-white: rgba(255, 255, 255, 0.8);

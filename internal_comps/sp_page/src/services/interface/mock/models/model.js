@@ -24,6 +24,9 @@ function _getInitialModel() {
             summary: 'Belgon leads the barrack guards as the captain over the defense of the city and its kingdom.',
             partitions: [
               {
+                type: 'hr'
+              },
+              {
                 type: 'h1',
                 value: 'This is an h1 header'
               },
@@ -159,17 +162,34 @@ function _getInitialModel() {
               },
               {
                 type: 'image',
-                altText: 'alt text for an image',
-                link: 'https://image.shutterstock.com/image-illustration/chinese-style-fantasy-scenes3d-rendering-260nw-647884516.jpg'
+                altText: 'The Dark Rider is coming',
+                link: 'https://us.123rf.com/450wm/ibreaker213/ibreaker2131408/ibreaker213140800004/30989551-stock-illustration-black-horseman-castle-fantasy-black-horse-rider-with-background-castle-view-illustration-.jpg?ver=6'
+              },
+              {
+                type: 'hr'
               },
               {
                 type: 'image',
-                altText: null,
-                link: 'https://image.shutterstock.com/image-photo/warrior-man-standing-on-fantasy-260nw-1069598228.jpg'
+                altText: 'We need to talk about what you do when an image is to large.',
+                // link: 'http://www.desktopwallpaperhd.net/wallpapers/7/9/fantasy-stock-mountain-background-art-irinama-79433.jpg'
+                link: 'https://ae01.alicdn.com/kf/HTB1Fb9zNpXXXXX8XXXXq6xXFXXXU/fantasy-art-paintings-landscapes-architecture-buildings-castles-surreal-waterrfalls-nature-scenic-Home-Decoration-Canvas-Poster.jpg'
               },
               {
                 type: 'quote',
-                value: 'quoted text'
+                partitions: [
+                  {
+                    type: 'text',
+                    value: '"I tend to think to much, Bast. My greatest successes came from decisions I made when I stopped thinking and simply did what felt right. Even if there was no good explanation for what I did...Even if there were very good reasons for me '                    
+                  },
+                  {
+                    type: 'italics',
+                    value: 'not'
+                  },
+                  {
+                    type: 'text',
+                    value: ' to do what I did." -Kvothe; The Name of the Wind, p.25'
+                  }
+                ]
               },
               {
                 type: 'hr'
@@ -177,6 +197,31 @@ function _getInitialModel() {
               {
                 type: 'quote',
                 value: 'or quoted paragraphs\nif it\'s more than one line'
+              },
+              {
+                type: 'quote',
+                partitions: [
+                  {
+                    type: 'text',
+                    value: 'quoted paragraphs with\n',
+                  },
+                  {
+                    type: 'bold',
+                    value: 'inner partitions'
+                  },
+                  {
+                    type: 'text',
+                    value: ' in it'
+                  }
+                ]
+              },
+              {
+                type: 'image',
+                altText: null,
+                link: 'https://st2.depositphotos.com/3347209/6125/i/450/depositphotos_61250691-stock-photo-crows-in-the-forest.jpg'
+              },
+              {
+                type: 'hr'
               }
             ]
           }
