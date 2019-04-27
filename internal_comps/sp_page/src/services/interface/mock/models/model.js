@@ -52,7 +52,25 @@ function _getInitialModel() {
                 partitions: [
                   {
                     type: 'text',
-                    value: 'This is regular text.\nIt can be split on multiple lines.\nIt '
+                    value: 'This is regular text.'
+                  }
+                ]
+              },
+              {
+                type: 'p',
+                partitions: [
+                  {
+                    type: 'text',
+                    value: 'It can be split on multiple lines.'
+                  }
+                ]
+              },
+              {
+                type: 'p',
+                partitions: [
+                  {
+                    type: 'text',
+                    value: 'It '
                   },
                   {
                     type: 'bold',
