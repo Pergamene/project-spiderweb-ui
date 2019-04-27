@@ -18,7 +18,7 @@ export class SpInnerPartition extends LitElement {
           font-style: italic;
         }
 
-        a:link {
+        a {
           color: var(${APP_COLORS.LINK_BLUE});
         }
 
@@ -53,7 +53,7 @@ export class SpInnerPartition extends LitElement {
     // let part = partition;
     // let parts = partition.partitions;
     // debugger;
-    
+
     console.log(partition);
     if (partition.partitions) {
       return html`<sp-inner-partition class="${partition.type}" .partitions="${partition.partitions}"></sp-inner-partition>`;

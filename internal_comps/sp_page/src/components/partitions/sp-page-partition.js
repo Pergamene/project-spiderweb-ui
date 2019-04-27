@@ -60,15 +60,7 @@ export class SpPagePartition extends LitElement {
           width: 100%;
           background-color: var(${APP_COLORS.NEAR_WHITE});
         }
-
-        img {
-          padding: 10px;
-        }
-
-        hr {
-          border-color: var(${APP_COLORS.OFF_BLACK});
-          border-width: .5px;
-        }
+        
         /*ul, ol, image, p*/
 
         .outer-partition {
@@ -85,39 +77,18 @@ export class SpPagePartition extends LitElement {
     }
   }
 
-  // p, quote
+  //@TODO: split p partitions on \n
+
   _getPartitionHtml() {
-    //@TODO: Remove
-    let part = this.partition;
-    let parts = this.partition.partitions;
-    // debugger;
-
-
     if (this.partition.partitions) {
       return html`<sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition>`;
     }
     let partitionClass = this.partition.type;
     switch (partitionClass) {
       case 'ul':
-        return html`
-          <ul>
-            ${this.partition.items.map((item) => html`
-            <li>
-              <sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${[item]}"></sp-inner-partition>
-            </li>
-            `)}
-          </ul>
-        `;
+        return html`<ul>${this._getListItemHtml(this.partition)}</ul>`;
       case 'ol':
-        return html`
-          <ol>
-            ${this.partition.items.map((item) => html`
-            <li>
-              <sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${[item]}"></sp-inner-partition>
-            </li>
-            `)}
-          </ol>
-        `;
+        return html`<ol>${this._getListItemHtml(this.partition)}</ol>`;
       case 'image':
         return html`<img class="${this.partition.type} outer-partition" src="${this.partition.link}" alt="${this.partition.altText ? this.partition.altText : ""}">`;
       case 'hr':
@@ -125,6 +96,10 @@ export class SpPagePartition extends LitElement {
       default:
         return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;
     } 
+  }
+
+  _getListItemHtml(partition) {
+    return html`${this.partition.items.map((item) => html`<li><sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${[item]}"></sp-inner-partition></li>`)}`;
   }
 }
 
