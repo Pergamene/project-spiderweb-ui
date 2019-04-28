@@ -15,6 +15,10 @@ class SpIconBtn extends LitElement {
           fill: ${this._getBtnFillColor()};
         }
 
+        button {
+          transition: background-color 0.2s;
+        }
+
         button.sp-icon-btn {
           border: none;
           width: 40px;
