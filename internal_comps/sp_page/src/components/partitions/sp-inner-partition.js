@@ -27,7 +27,6 @@ export class SpInnerPartition extends LitElement {
   }
 
   _getPartitionHtml(partition) {
-    console.log(partition);
     if (partition.partitions) {
       return html`<sp-inner-partition class="${partition.type}" .partitions="${partition.partitions}"></sp-inner-partition>`;
     }
