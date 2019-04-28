@@ -89,12 +89,7 @@ export class SpPagePartition extends LitElement {
     }
   }
 
-  //@TODO: split p partitions on \n
-
   _getPartitionHtml() {
-    // if (this.partition.partitions) {
-    //   return html`<sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition>`;
-    // }
     let partitionClass = this.partition.type;
     switch (partitionClass) {
       case 'ul':
@@ -109,8 +104,8 @@ export class SpPagePartition extends LitElement {
         return html`<p><sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition></p>`;
       case 'quote':
         return this._getQuoteHtml();
-      // default:
-      //   return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;
+      default:
+        return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;
     } 
   }
 

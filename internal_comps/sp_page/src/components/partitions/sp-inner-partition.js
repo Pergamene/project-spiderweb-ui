@@ -31,7 +31,6 @@ export class SpInnerPartition extends LitElement {
         }
         /*color*/
 
-        /*@TODO: Remove*/
         .relation {
           text-decoration: underline;
           color: var(${APP_COLORS.RELATION_PINK});
@@ -49,11 +48,6 @@ export class SpInnerPartition extends LitElement {
   }
 
   _getPartitionHtml(partition) {
-    //@TODO: Remove
-    // let part = partition;
-    // let parts = partition.partitions;
-    // debugger;
-
     console.log(partition);
     if (partition.partitions) {
       return html`<sp-inner-partition class="${partition.type}" .partitions="${partition.partitions}"></sp-inner-partition>`;
