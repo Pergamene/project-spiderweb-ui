@@ -21,6 +21,15 @@ export const LOCALE_EN = {
     OTHER: {
       
     }
+  },
+  SP_PAGE_SELECTION: {
+    selected: (selection) => `Selected: ${selection}`,
+    editing: (selection) => `Editing: ${selection}`,
+    SELECTIONS: {
+      OVERVIEW: 'Page Overview',
+      PROPERTIES: 'Page Properties',
+      NONE: 'None'
+    }
   }
 };
 

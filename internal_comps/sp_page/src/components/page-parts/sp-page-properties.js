@@ -2,6 +2,9 @@ import { html, LitElement } from '@polymer/lit-element';
 import { SpPageStyles } from '../sp-page-styles';
 
 import './sp-page-property.js';
+import '../edit-pane/sp-dropdown-btn';
+import { localStore } from '../../state/store.js';
+import { selectPageProperties } from '../../state/action';
 
 export class SpPageProperties extends LitElement {
   render() {
@@ -21,7 +24,9 @@ export class SpPageProperties extends LitElement {
           margin-top: 10px;
         }
       </style>
-      <div edit-pane></div>
+      <div edit-pane>
+        <sp-dropdown-btn revealed></sp-dropdown-btn>
+      </div>
       <div page-pane>
         ${this.page.properties.map(property => this._getPropertyHtml(property))}
       </div>
@@ -35,7 +40,11 @@ export class SpPageProperties extends LitElement {
   }
 
   _getPropertyHtml(property) {
-    return html`<sp-page-property .property="${property}"></sp-page-property>`;
+    return html`<sp-page-property .property="${property}" @click="${() => this._selectPageProperties()}"></sp-page-property>`;
+  }
+
+  _selectPageProperties() {
+    localStore.dispatch(selectPageProperties());
   }
 }
 

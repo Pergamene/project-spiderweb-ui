@@ -34,8 +34,7 @@ export const SpPageStyles = html`
   [edit-pane] {
     display: flex;
     width: var(${EDIT_PANE.WIDTH});
-    align-self: center;
-    justify-content: center;
+    margin-top: 5px;
   }
 
   [page-pane] {

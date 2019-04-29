@@ -1,11 +1,9 @@
 import { html, LitElement } from '@polymer/lit-element';
 import { NAV, CONTENT_PANE, EDIT_PANE, PAGE_PANE } from '../sp-page-styles';
-import { localStore } from '../../state/store.js';
 
 import '../page-parts/sp-page-overview.js';
 import '../page-parts/sp-page-properties.js';
 import '../page-parts/sp-page-details.js';
-import { selectPageOverview, selectPageProperties } from '../../state/action';
 
 export class SpPageView extends LitElement {
   render() {
@@ -37,8 +35,8 @@ export class SpPageView extends LitElement {
         
       </div>
       <div class="right-column">
-        <sp-page-overview .page="${this.page}" @click="${() => this._selectPageOverview()}"></sp-page-overview>
-        <sp-page-properties .page="${this.page}" @click="${() => this._selectPageProperties()}"></sp-page-properties>
+        <sp-page-overview .page="${this.page}"></sp-page-overview>
+        <sp-page-properties .page="${this.page}"></sp-page-properties>
         <sp-page-details .page="${this.page}"></sp-page-details>
         <sp-page-relations .page="${this.page}"></sp-page-relations>
       </div>
@@ -49,14 +47,6 @@ export class SpPageView extends LitElement {
     return {
       page: { type: Object }
     }
-  }
-
-  _selectPageOverview() {
-    localStore.dispatch(selectPageOverview());
-  }
-
-  _selectPageProperties() {
-    localStore.dispatch(selectPageProperties());
   }
 }
 

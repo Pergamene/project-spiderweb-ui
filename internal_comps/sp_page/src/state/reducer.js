@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   ui: {
     pageSectionSelection: {
       id: null,
-      type: null
+      type: null,
+      action: null
     }
   },
   entities: {
@@ -22,14 +23,15 @@ function _updatePage(state, page) {
   };
 }
 
-function _setPageSectionSelection(state, sectionId, sectionType) {
+function _setPageSectionSelection(state, sectionId, sectionType, sectionAction) {
   return {
     ...state,
     ui: {
       ...state.ui,
       pageSectionSelection: {
         id: sectionId,
-        type: sectionType
+        type: sectionType,
+        action: sectionAction
       }
     }
   };
@@ -40,7 +42,14 @@ export const sp_page = (state = INITIAL_STATE, action) => {
     case ActionType.SET_PAGE:
       return _updatePage(state, action.page);
     case ActionType.SELECT_PAGE_SECTION:
-      return _setPageSectionSelection(state, action.id, action.type);
+      return _setPageSectionSelection(state, action.id, action.sectionType, null);
+    case ActionType.EDIT_PAGE_SELECTION:
+      return _setPageSectionSelection(state, state.ui.pageSectionSelection.id, state.ui.pageSectionSelection.type, action.action);
+    case ActionType.SAVE_PAGE_EDITS:
+      // @TODO:
+      return _setPageSectionSelection(state, null, null, null);
+    case ActionType.CANCEL_PAGE_SELECTION:
+      return _setPageSectionSelection(state, null, null, null);
     default:
       return state;
   }
