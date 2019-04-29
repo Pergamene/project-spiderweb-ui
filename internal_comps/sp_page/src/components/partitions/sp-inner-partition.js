@@ -29,7 +29,6 @@ export class SpInnerPartition extends LitElement {
         a:visited {
           color: var(${APP_COLORS.LINK_VISITED});
         }
-        /*color*/
 
         .relation {
           text-decoration: underline;
@@ -56,6 +55,7 @@ export class SpInnerPartition extends LitElement {
     switch (partitionClass) {
       case 'link':
         return html`<a href="${partition.link}">${partition.value}</a>`;
+      //@TODO: finish when sp-relation-link is finished
       // case 'relation':
       //   return html`<sp-relation-link class="${partition.type}" .relation="${partition.relation}"></sp-relation-link>`;
       case 'color':

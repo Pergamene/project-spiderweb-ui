@@ -62,6 +62,11 @@ export class SpPagePartition extends LitElement {
           display: block;
         }
 
+        .image {
+          max-width: 100%;
+          height: auto;
+        }
+
         figure {
           text-align: center;
         }
@@ -73,8 +78,6 @@ export class SpPagePartition extends LitElement {
           color: var(${APP_COLORS.IMAGE_CAPTION});
         }
         
-        /*ul, ol, p*/
-
         .outer-partition {
           margin: 10px 0;
         }
@@ -97,15 +100,15 @@ export class SpPagePartition extends LitElement {
       case 'ol':
         return html`<ol>${this._getListItemHtml()}</ol>`;
       case 'image':
-        return html`<figure class="outer-partition">${this._getImageHtml()}</figure>`;
+        return html`<figure class="${partitionClass} outer-partition">${this._getImageHtml()}</figure>`;
       case 'hr':
         return html`<hr>`;
       case 'p':
-        return html`<p><sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition></p>`;
+        return html`<p><sp-inner-partition class="${partitionClass} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition></p>`;
       case 'quote':
         return this._getQuoteHtml();
       default:
-        return html`<div class="${this.partition.type} outer-partition">${this.partition.value}</div>`;
+        return html`<div class="${partitionClass} outer-partition">${this.partition.value}</div>`;
     } 
   }
 

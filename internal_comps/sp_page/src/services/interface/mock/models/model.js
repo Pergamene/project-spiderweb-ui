@@ -170,8 +170,7 @@ function _getInitialModel() {
               },
               {
                 type: 'image',
-                altText: 'We need to talk about what you do when an image is too large.',
-                // link: 'http://www.desktopwallpaperhd.net/wallpapers/7/9/fantasy-stock-mountain-background-art-irinama-79433.jpg'
+                altText: 'The forsaken city',
                 link: 'https://ae01.alicdn.com/kf/HTB1Fb9zNpXXXXX8XXXXq6xXFXXXU/fantasy-art-paintings-landscapes-architecture-buildings-castles-surreal-waterrfalls-nature-scenic-Home-Decoration-Canvas-Poster.jpg'
               },
               {
