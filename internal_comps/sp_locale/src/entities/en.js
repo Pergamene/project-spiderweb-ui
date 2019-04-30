@@ -30,6 +30,11 @@ export const LOCALE_EN = {
       PROPERTIES: 'Page Properties',
       NONE: 'None'
     }
+  },
+  SP_PAGE_EDIT: {
+    PAGE_TITLE: {
+      LABEL: 'Title'
+    }
   }
 };
 

@@ -6,7 +6,7 @@ import './page-sections/sp-page-header.js';
 import './page-sections/sp-page-view.js';
 import './page-action/sp-page-action-footer.js';
 import { SpPageStyles } from './sp-page-styles.js';
-import { retrievePage, PAGE_SELECTION_ACTION_EDIT) } from '../state/action.js';
+import { retrievePage, PAGE_SELECTION_ACTION_EDIT } from '../state/action.js';
 import { Log } from 'interface-handler/src/logger';
 import { deepCopy } from 'rhyeen-utils/util';
 

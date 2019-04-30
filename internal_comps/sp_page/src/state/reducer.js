@@ -47,7 +47,8 @@ export const sp_page = (state = INITIAL_STATE, action) => {
       return _setPageSectionSelection(state, state.ui.pageSectionSelection.id, state.ui.pageSectionSelection.type, action.action);
     case ActionType.SAVE_PAGE_EDITS:
       // @TODO:
-      return _setPageSectionSelection(state, null, null, null);
+      state = _setPageSectionSelection(state, null, null, null);
+      return _updatePage(state, action.page);
     case ActionType.CANCEL_PAGE_SELECTION:
       return _setPageSectionSelection(state, null, null, null);
     default:

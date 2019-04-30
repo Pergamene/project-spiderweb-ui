@@ -23,7 +23,7 @@ class SpBtn extends LitElement {
       btntype: { type: String },
       disabled: { type: Boolean }
     };
-  };
+  }
 
   _handleDisabledPropogation(e) {
     if (!this.disabled) {

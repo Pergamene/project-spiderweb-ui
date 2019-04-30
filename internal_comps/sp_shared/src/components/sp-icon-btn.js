@@ -47,7 +47,7 @@ class SpIconBtn extends LitElement {
       darkBackground: { type: Boolean },
       disabled: { type: Boolean }
     };
-  };
+  }
 
 
   _handleDisabledPropogation(e) {
