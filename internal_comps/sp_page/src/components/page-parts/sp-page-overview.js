@@ -3,7 +3,7 @@ import { SpPageStyles } from '../sp-page-styles';
 
 import '../page-parts/sp-page-title.js';
 import '../page-parts/sp-page-summary.js';
-import '../edit-pane/sp-dropdown-btn';
+import '../options-pane/sp-dropdown-btn';
 import { localStore } from '../../state/store.js';
 import { selectPageOverview } from '../../state/action';
 
@@ -16,7 +16,7 @@ export class SpPageOverview extends LitElement {
           display: flex;
         }
       </style>
-      <div edit-pane>
+      <div options-pane>
         <sp-dropdown-btn revealed></sp-dropdown-btn>        
       </div>
       <div page-pane>
@@ -28,7 +28,8 @@ export class SpPageOverview extends LitElement {
 
   static get properties() { 
     return {
-      page: { type: Object }
+      page: { type: Object },
+      action: { type: String }
     }
   }
 

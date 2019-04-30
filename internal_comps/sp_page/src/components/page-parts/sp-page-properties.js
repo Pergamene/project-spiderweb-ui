@@ -2,7 +2,7 @@ import { html, LitElement } from '@polymer/lit-element';
 import { SpPageStyles } from '../sp-page-styles';
 
 import './sp-page-property.js';
-import '../edit-pane/sp-dropdown-btn';
+import '../options-pane/sp-dropdown-btn';
 import { localStore } from '../../state/store.js';
 import { selectPageProperties } from '../../state/action';
 
@@ -24,7 +24,7 @@ export class SpPageProperties extends LitElement {
           margin-top: 10px;
         }
       </style>
-      <div edit-pane>
+      <div options-pane>
         <sp-dropdown-btn revealed></sp-dropdown-btn>
       </div>
       <div page-pane>

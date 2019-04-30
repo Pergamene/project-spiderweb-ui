@@ -35,17 +35,18 @@ export class SpPageView extends LitElement {
         
       </div>
       <div class="right-column">
-        <sp-page-overview .page="${this.page}"></sp-page-overview>
-        <sp-page-properties .page="${this.page}"></sp-page-properties>
-        <sp-page-details .page="${this.page}"></sp-page-details>
-        <sp-page-relations .page="${this.page}"></sp-page-relations>
+        <sp-page-overview .page="${this.page}" .action="${this.action}"></sp-page-overview>
+        <sp-page-properties .page="${this.page}" .action="${this.action}"></sp-page-properties>
+        <sp-page-details .page="${this.page}" .action="${this.action}"></sp-page-details>
+        <sp-page-relations .page="${this.page}" .action="${this.action}"></sp-page-relations>
       </div>
     `
   }
 
   static get properties() { 
     return {
-      page: { type: Object }
+      page: { type: Object },
+      action: { type: String }
     }
   }
 }

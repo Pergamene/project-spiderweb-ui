@@ -14,7 +14,7 @@ export const CONTENT_PANE = {
 };
 
 export const EDIT_PANE = {
-  WIDTH: '--sp_page-edit-pane-width'
+  WIDTH: '--sp_page-options-pane-width'
 };
 
 export const PAGE_PANE = {
@@ -27,11 +27,11 @@ export const SpPageStyles = html`
     --sp_page-nav-header-height: 46px;
     --sp_page-nav-footer-height: 46px;
     --sp_page-content-pane-width: 200px;
-    --sp_page-edit-pane-width: 60px;
+    --sp_page-options-pane-width: 60px;
     --sp_page-page-pane-width: 600px;
   }
 
-  [edit-pane] {
+  [options-pane] {
     display: flex;
     width: var(${EDIT_PANE.WIDTH});
     margin-top: 5px;

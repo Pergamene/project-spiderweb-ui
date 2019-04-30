@@ -2,7 +2,7 @@ import { html, LitElement } from '@polymer/lit-element';
 import { SpPageStyles } from '../sp-page-styles';
 
 import './sp-page-detail.js';
-import '../edit-pane/sp-dropdown-btn';
+import '../options-pane/sp-dropdown-btn';
 import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values';
 
 export class SpPageDetails extends LitElement {
@@ -35,7 +35,7 @@ export class SpPageDetails extends LitElement {
         }
       </style>
       <div page-pane-section>
-        <div edit-pane>
+        <div options-pane>
           <sp-dropdown-btn revealed></sp-dropdown-btn>
         </div>
         <div page-pane>

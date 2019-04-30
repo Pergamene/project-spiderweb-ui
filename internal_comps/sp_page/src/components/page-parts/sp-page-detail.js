@@ -4,7 +4,7 @@ import { SpPageStyles } from '../sp-page-styles';
 import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 
 import '../partitions/sp-page-partition.js';
-import '../edit-pane/sp-dropdown-btn';
+import '../options-pane/sp-dropdown-btn';
 
 export class SpPageDetail extends LitElement {
   render() {
@@ -29,7 +29,7 @@ export class SpPageDetail extends LitElement {
           background-color: var(${APP_COLORS.NEAR_WHITE});
         }
       </style>
-      <div edit-pane>
+      <div options-pane>
         <sp-dropdown-btn revealed></sp-dropdown-btn>
       </div>
       <div page-pane>
