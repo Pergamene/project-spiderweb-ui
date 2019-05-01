@@ -4,7 +4,6 @@ import { EditHoverIcon, SaveHoverIcon, CloseHoverIcon } from '../../../../sp_sha
 
 import '../../../../sp_shared/src/components/sp-icon-btn.js';
 import { Log } from 'interface-handler/src/logger';
-import { localStore } from '../../state/store.js';
 
 export const ITEM_TYPE = {
   EDIT_BTN: 'edit-btn',
@@ -44,36 +43,39 @@ export class SpPageActionItems extends LitElement {
     if (!this.items) {
       return '';
     }
-    for (let item of this.items) {
-      itemsHtml.push(this._getItemHtml(item));
+    for (let index = 0; index < this.items.length; index++) {
+      itemsHtml.push(this._getItemHtml(index, this.items[index]));
     }
     return itemsHtml;
   }
 
-  _getItemHtml(item) {
+  _getItemHtml(index, item) {
     switch (item.type) {
       case ITEM_TYPE.EDIT_BTN:
-        return this._getItemIconHtml(item, EditHoverIcon);
+        return this._getItemIconHtml(index, item, EditHoverIcon);
       case ITEM_TYPE.SAVE_BTN:
-        return this._getItemIconHtml(item, SaveHoverIcon);
+        return this._getItemIconHtml(index, item, SaveHoverIcon);
       case ITEM_TYPE.CLOSE_BTN:
-        return this._getItemIconHtml(item, CloseHoverIcon);
+        return this._getItemIconHtml(index, item, CloseHoverIcon);
       default:
-        Log.error(`Unexpected item type: ${item.type}`);
+        Log.error(`Unexpected item type: ${item.type} for item at index ${index}`);
         return html``;
     }
   }
 
-  _getItemIconHtml(item, icon) {
-    return html`<sp-icon-btn .icon="${icon}" @click="${() => this._handleClick(item)}" darkBackground></sp-icon-btn>`;
+  _getItemIconHtml(index, item, icon) {
+    return html`<sp-icon-btn .icon="${icon}" @click="${(e) => this._handleClick(e, index, item)}" darkBackground></sp-icon-btn>`;
   }
 
-  _handleClick(item) {
-    if (!item.dispatchOnClick) {
-      Log.info(`Item ${item} did not have a dispatchOnClick event`);
-      return;
-    }
-    localStore.dispatch(item.dispatchOnClick);
+  _handleClick(e, index, item) {
+    let event = new CustomEvent('item-clicked', {
+      detail: {
+        originalEvent: e,
+        index,
+        item
+      }
+    });
+    this.dispatchEvent(event);
   }
 }
 

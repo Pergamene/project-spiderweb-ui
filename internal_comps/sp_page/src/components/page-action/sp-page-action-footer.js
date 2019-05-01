@@ -40,7 +40,7 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
     if (!action) {
       return [{
         type: ITEM_TYPE.EDIT_BTN,
-        dispatchOnClick: editPageSelection(),
+        dispatchToStore: editPageSelection(),
       }];
     }
     switch(action) {
@@ -48,11 +48,11 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
         return [
           {
             type: ITEM_TYPE.SAVE_BTN,
-            dispatchOnClick: savePageEdits(),
+            dispatchEvent: 'save-btn-clicked',
           },
           {
             type: ITEM_TYPE.CLOSE_BTN,
-            dispatchOnClick: cancelPageSelection(),
+            dispatchToStore: cancelPageSelection(),
           }
         ];
       default:
@@ -85,7 +85,7 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
         <sp-page-action-selection .name="${this._selectionName}" .action="${this._selectionAction}"></sp-page-action-selection>
       </div>
       <div class="right-items">
-        <sp-page-action-items .items="${this._selectionActionItems}"></sp-page-action-items>
+        <sp-page-action-items .items="${this._selectionActionItems}" @item-clicked="${this._handleItemClick}"></sp-page-action-items>
       </div>
     `;
   }
@@ -99,6 +99,21 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
       default:
         Log.error(`Undefined selection type: ${selectionType}`);
         return 'UNDEFINED';
+    }
+  }
+
+  _handleItemClick(e) {
+    let item = this._selectionActionItems[e.detail.index];
+    if (item.dispatchToStore){
+      localStore.dispatch(item.dispatchToStore);
+    }
+    if (item.dispatchEvent) {
+      let event = new CustomEvent(item.dispatchEvent, {
+        detail: {
+          originalEvent: e
+        }
+      });
+      this.dispatchEvent(event);
     }
   }
 }

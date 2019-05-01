@@ -5,9 +5,11 @@ import '../../../../../sp_shared/src/components/sp-inline-text-field.js';
 
 export class SpPageTitleEdit extends LitElement {
   render() {
-    this.page.title = "hello world";
     return html`
-      <sp-inline-text-field .value="${this.page.title}" .label="${LOCALE_EN.SP_PAGE_EDIT.PAGE_TITLE.LABEL}"></sp-inline-text-field>
+      <sp-inline-text-field
+          .valueContainer="${this.page}"
+          .valueKey="${'title'}"
+          .label="${LOCALE_EN.SP_PAGE_EDIT.PAGE_TITLE.LABEL}"></sp-inline-text-field>
     `
   }
 

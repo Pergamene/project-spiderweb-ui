@@ -34,6 +34,9 @@ export const LOCALE_EN = {
   SP_PAGE_EDIT: {
     PAGE_TITLE: {
       LABEL: 'Title'
+    },
+    PAGE_SUMMARY: {
+      LABEL: 'Summary'
     }
   }
 };

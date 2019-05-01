@@ -1,21 +1,16 @@
 import { html, LitElement } from '@polymer/lit-element';
 
 import { APP_COLORS } from '../../../../../sp_shared/src/entities/sp-shared-style-values.js';
+import { LOCALE_EN } from '../../../../../sp_locale/src/entities/en.js';
 
 export class SpPageSummaryEdit extends LitElement {
   render() {
     return html`
-      <style>
-        :host {
-          font-size: 14px;
-          line-height: 24px;
-          border-left: 2px solid var(${APP_COLORS.OFF_BLACK});
-          padding: 5px 10px;
-          width: calc(100% - 2px - 10px - 10px);
-          background-color: var(${APP_COLORS.NEAR_WHITE});
-        }
-      </style>
-      ${this.page.summary}
+      <sp-inline-text-field
+          .valueContainer="${this.page}"
+          .valueKey="${'summary'}"
+          .label="${LOCALE_EN.SP_PAGE_EDIT.PAGE_SUMMARY.LABEL}"
+          multiline></sp-inline-text-field>
     `
   }
 

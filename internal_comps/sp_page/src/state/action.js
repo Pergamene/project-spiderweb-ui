@@ -38,7 +38,7 @@ export const EDIT_PAGE_SELECTION = _createRequestRaw('EDIT_PAGE_SELECTION');
 export const editPageSelection = () => _action(EDIT_PAGE_SELECTION, {action: PAGE_SELECTION_ACTION_EDIT});
 
 export const SAVE_PAGE_EDITS = _createRequestRaw('SAVE_PAGE_EDITS');
-export const savePageEdits = () => _action(SAVE_PAGE_EDITS, {});
+export const savePageEdits = (page) => _action(SAVE_PAGE_EDITS, {page});
 
 export const CANCEL_PAGE_SELECTION = _createRequestRaw('CANCEL_PAGE_SELECTION');
 export const cancelPageSelection = () => _action(CANCEL_PAGE_SELECTION, {});
