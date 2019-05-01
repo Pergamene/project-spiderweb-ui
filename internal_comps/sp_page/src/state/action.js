@@ -1,4 +1,6 @@
 import { getPage } from "../services/interface/page";
+import { localStore } from "./store";
+import { Log } from "interface-handler/src/logger";
 
 const COMPONENT_TAG = 'SP_PAGE';
 
@@ -34,11 +36,79 @@ export const selectPageProperties = () => _action(SELECT_PAGE_SECTION, {sectionT
 
 
 export const PAGE_SELECTION_ACTION_EDIT = 'edit';
+
+export const editPageSelection = () => (dispatch) => {
+  let state = localStore.getState();
+  let draftPage = _getDraftPage(state.sp_page.ui.pageSectionSelection, state.sp_page.entities.page);
+  dispatch(_editPageSelection(draftPage));
+}
+
+function _getDraftPage(pageSectionSelection, page) {
+  switch (pageSectionSelection.type) {
+    case PAGE_SECTION_TYPE_OVERVIEW:
+      return {
+        ...page,
+        title: page.title,
+        summary: page.summary
+      };
+    // @ISSUE: you'll want to get the markdown from the partition here.
+    // case PAGE_SECTION_TYPE_DETAIL:
+    //   let markdown = blah blah blah
+    //   let details = [...page.details];
+    //   details[pageSectionSelection.id] = { 
+    //     ...page.details[pageSectionSelection.id],
+    //     markdown: markdown
+    //   };
+    //   delete details[pageSectionSelection.id].partitions;
+    //   return {
+    //     ...page,
+    //     details
+    //   };
+    default:
+      Log.error(`unexpected page selection type: ${sectionType}`);
+      return page;
+  }
+}
+
 export const EDIT_PAGE_SELECTION = _createRequestRaw('EDIT_PAGE_SELECTION');
-export const editPageSelection = () => _action(EDIT_PAGE_SELECTION, {action: PAGE_SELECTION_ACTION_EDIT});
+export const _editPageSelection = (page) => _action(EDIT_PAGE_SELECTION, {page});
+
+export const SET_DRAFT_PAGE = _createRequestRaw('SET_DRAFT_PAGE');
+export const _setDraftPage = (page) => _action(SET_DRAFT_PAGE, {page});
+
+
+export const savePageEdits = (draftPage) => (dispatch) => {
+  let state = localStore.getState();
+  let page = _getUndraftedPage(state.sp_page.ui.pageSectionSelection, draftPage);
+  dispatch(_savePageEdits(page));
+}
+
+function _getUndraftedPage(pageSectionSelection, draftPage) {
+  switch (pageSectionSelection.type) {
+    case PAGE_SECTION_TYPE_OVERVIEW:
+      return draftPage;
+    // @ISSUE: you'll want to get the partitions from the markdown here.
+    // case PAGE_SECTION_TYPE_DETAIL:
+    //   let partitions = blah blah blah
+    //   let details = [...page.details];
+    //   details[pageSectionSelection.id] = { 
+    //     ...page.details[pageSectionSelection.id],
+    //     partitions: partitions
+    //   };
+    //   delete details[pageSectionSelection.id].markdown;
+    //   return {
+    //     ...page,
+    //     details
+    //   };
+    default:
+      Log.error(`unexpected page selection type: ${sectionType}`);
+      return draftPage;
+  }
+}
 
 export const SAVE_PAGE_EDITS = _createRequestRaw('SAVE_PAGE_EDITS');
-export const savePageEdits = (page) => _action(SAVE_PAGE_EDITS, {page});
+export const _savePageEdits = (page) => _action(SAVE_PAGE_EDITS, {page});
+
 
 export const CANCEL_PAGE_SELECTION = _createRequestRaw('CANCEL_PAGE_SELECTION');
 export const cancelPageSelection = () => _action(CANCEL_PAGE_SELECTION, {});

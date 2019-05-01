@@ -8,7 +8,6 @@ import './page-action/sp-page-action-footer.js';
 import { SpPageStyles } from './sp-page-styles.js';
 import { retrievePage, PAGE_SELECTION_ACTION_EDIT, savePageEdits } from '../state/action.js';
 import { Log } from 'interface-handler/src/logger';
-import { deepCopy } from 'rhyeen-utils/util';
 
 class SpPage extends connect(localStore)(LitElement) {
   render() {
@@ -57,8 +56,8 @@ class SpPage extends connect(localStore)(LitElement) {
     if (this._pageAction) {
       switch(this._pageAction) {
         case PAGE_SELECTION_ACTION_EDIT:
-          // @NOTE: we deep copy the page so this._page can act like an edit draft.
-          this._page = deepCopy(this._page);
+          // @NOTE: we use the page draft as it is a copy and has things like markdown from partition for details, etc.
+          this._page = state.sp_page.ui.draftPage;
           break;
         default:
           Log.error(`unexepcted page action: ${this._pageAction}`);

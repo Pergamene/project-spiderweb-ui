@@ -36,10 +36,12 @@ export class SpPageOverview extends LitElement {
     }
   }
 
+  // @ISSUE: you'll want to do something similar for sp-page-detail.js but instead call selectPageDetail where detailId is the index of the detail item.
   _selectPageOverview() {
     localStore.dispatch(selectPageOverview());
   }
 
+  // @ISSUE: you'll want to do something similiar for <div page-pane> in sp-page-detail.js so that you have an edit view and a read view.
   _getPagePaneHtml() {
     if (!this.action) {
       return html`

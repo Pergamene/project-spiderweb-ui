@@ -1,6 +1,4 @@
 import { html, LitElement } from '@polymer/lit-element';
-
-import { APP_COLORS } from '../../../../../sp_shared/src/entities/sp-shared-style-values.js';
 import { LOCALE_EN } from '../../../../../sp_locale/src/entities/en.js';
 
 export class SpPageSummaryEdit extends LitElement {
