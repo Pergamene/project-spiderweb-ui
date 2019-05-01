@@ -1,24 +1,35 @@
 import { html, LitElement } from '@polymer/lit-element';
+import { SpPageStyles } from '../sp-page-styles';
 
 import './sp-page-property.js';
+import '../options-pane/sp-dropdown-btn';
+import { localStore } from '../../state/store.js';
+import { selectPageProperties } from '../../state/action';
 
 export class SpPageProperties extends LitElement {
   render() {
     return html`
+      ${SpPageStyles}
       <style>
         :host {
+          display: flex;
           margin: 20px 0;
         }
 
         sp-page-property:first-child {
-          margin-bottom: 0;
+          margin-top: 0;
         }
 
         sp-page-property {
-          margin-bottom: 10px;
+          margin-top: 10px;
         }
       </style>
-      ${this.page.properties.map(property => this._getPropertyHtml(property))}
+      <div options-pane>
+        <sp-dropdown-btn revealed></sp-dropdown-btn>
+      </div>
+      <div page-pane>
+        ${this.page.properties.map(property => this._getPropertyHtml(property))}
+      </div>
     `
   }
 
@@ -29,7 +40,11 @@ export class SpPageProperties extends LitElement {
   }
 
   _getPropertyHtml(property) {
-    return html`<sp-page-property .property="${property}"></sp-page-property>`;
+    return html`<sp-page-property .property="${property}" @click="${() => this._selectPageProperties()}"></sp-page-property>`;
+  }
+
+  _selectPageProperties() {
+    localStore.dispatch(selectPageProperties());
   }
 }
 
