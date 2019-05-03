@@ -70,9 +70,7 @@ export class SpInnerPartition extends LitElement {
       lines = lines.filter(line => line !== '');
       return html`<span class="${partition.type}">${lines.map((line) => html`${line}<br>`)}</span>`;
     }
-    else {
-      return html`${partition.value}`;
-    }
+    return html`${partition.value}`;
   }
 }
 
