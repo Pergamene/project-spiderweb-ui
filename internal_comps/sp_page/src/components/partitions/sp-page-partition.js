@@ -73,8 +73,8 @@ export class SpPagePartition extends LitElement {
 
         figcaption {
           font-size: 11px;
-          font-variant: small-caps;
           font-weight: bolder;
+          text-transform: uppercase;
           color: var(${APP_COLORS.IMAGE_CAPTION});
         }
         
