@@ -25,7 +25,7 @@ export class SpPageDetail extends LitElement {
           line-height: 24px;
           border-left: 2px solid var(${APP_COLORS.OFF_BLACK});
           padding: 5px 10px;
-          width: calc(100% - 2px - 10px - 10px);
+          background-size: 100%;
           background-color: var(${APP_COLORS.NEAR_WHITE});
         }
       </style>

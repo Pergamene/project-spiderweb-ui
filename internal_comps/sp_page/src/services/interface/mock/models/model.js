@@ -24,6 +24,9 @@ function _getInitialModel() {
             summary: 'Belgon leads the barrack guards as the captain over the defense of the city and its kingdom.',
             partitions: [
               {
+                type: 'hr'
+              },
+              {
                 type: 'h1',
                 value: 'This is an h1 header'
               },
@@ -32,11 +35,45 @@ function _getInitialModel() {
                 value: 'This is an h2 header'
               },
               {
+                type: 'h3',
+                value: 'This is an h3 header'
+              },
+              {
+                type: 'h4',
+                value: 'This is an h4 header'
+              },
+              {
+                type: 'h5',
+                value: 'This is an h5 header'
+              },
+              {
+                type: 'h6',
+                value: 'This is an h6 header'
+              },
+              {
                 type: 'p',
                 partitions: [
                   {
                     type: 'text',
-                    value: 'This is regular text.\nIt can be split on multiple lines.\nIt '
+                    value: 'This is regular text.'
+                  }
+                ]
+              },
+              {
+                type: 'p',
+                partitions: [
+                  {
+                    type: 'text',
+                    value: 'It can be split on multiple lines.'
+                  }
+                ]
+              },
+              {
+                type: 'p',
+                partitions: [
+                  {
+                    type: 'text',
+                    value: 'It '
                   },
                   {
                     type: 'bold',
@@ -125,17 +162,33 @@ function _getInitialModel() {
               },
               {
                 type: 'image',
-                altText: 'alt text for an image',
-                link: 'https://www.google.com/someimage'
+                altText: 'The Dark Rider is coming',
+                link: 'https://us.123rf.com/450wm/ibreaker213/ibreaker2131408/ibreaker213140800004/30989551-stock-illustration-black-horseman-castle-fantasy-black-horse-rider-with-background-castle-view-illustration-.jpg?ver=6'
+              },
+              {
+                type: 'hr'
               },
               {
                 type: 'image',
-                altText: null,
-                link: 'https://www.google.com/someimage'
+                altText: 'The forsaken city',
+                link: 'https://ae01.alicdn.com/kf/HTB1Fb9zNpXXXXX8XXXXq6xXFXXXU/fantasy-art-paintings-landscapes-architecture-buildings-castles-surreal-waterrfalls-nature-scenic-Home-Decoration-Canvas-Poster.jpg'
               },
               {
                 type: 'quote',
-                value: 'quoted text'
+                partitions: [
+                  {
+                    type: 'text',
+                    value: '"I tend to think to much, Bast. My greatest successes came from decisions I made when I stopped thinking and simply did what felt right. Even if there was no good explanation for what I did...Even if there were very good reasons for me '                    
+                  },
+                  {
+                    type: 'italics',
+                    value: 'not'
+                  },
+                  {
+                    type: 'text',
+                    value: ' to do what I did." -Kvothe; The Name of the Wind, p.25'
+                  }
+                ]
               },
               {
                 type: 'hr'
@@ -143,6 +196,31 @@ function _getInitialModel() {
               {
                 type: 'quote',
                 value: 'or quoted paragraphs\nif it\'s more than one line'
+              },
+              {
+                type: 'quote',
+                partitions: [
+                  {
+                    type: 'text',
+                    value: 'quoted paragraphs with\n',
+                  },
+                  {
+                    type: 'bold',
+                    value: 'inner partitions'
+                  },
+                  {
+                    type: 'text',
+                    value: ' in it'
+                  }
+                ]
+              },
+              {
+                type: 'image',
+                altText: null,
+                link: 'https://st2.depositphotos.com/3347209/6125/i/450/depositphotos_61250691-stock-photo-crows-in-the-forest.jpg'
+              },
+              {
+                type: 'hr'
               }
             ]
           }
@@ -156,4 +234,3 @@ export function initializeModel() {
   let model = _getInitialModel();
   Model.pages = {...model.pages};
 }
-
