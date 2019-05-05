@@ -25,7 +25,8 @@
     "intrastore-thunk": "0.0.1",
     "pwa-helpers": "^0.9.0",
     "reselect": "^3.0.1",
-    "rhyeen-utils": "0.0.1"
+    "rhyeen-utils": "0.0.1",
+    "sp-markdown-partitioner": "^0.1.2"
   },
   "devDependencies": {
     "axe-core": "^3.0.0",
