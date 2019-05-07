@@ -7,6 +7,12 @@ export const APP_COLORS = {
   NEAR_WHITE_BORDER: '--sp_shared-near-white-border',
   OFF_BLACK: '--sp_shared-off-black',
   HINT_GRAY: '--sp_shared-hint-gray',
+  LINK_BLUE: '--sp_shared-link-blue',
+  LINK_HOVER: '--sp_shared-link-hover',
+  LINK_VISITED: '--sp_shared-link-visited',
+  RELATION_PINK: '--sp_shared-relation-pink',
+  RELATION_VISITED: '--sp_shared-realtion-visited',
+  IMAGE_CAPTION: '--sp_shared-image-caption',
   OVERLAY_BLACK: '--sp_shared-overlay-black',
   OVERLAY_WHITE: '--sp_shared-overlay-white',
   SVG_DEFAULT: '--sp_shared-default-svg-color'
