@@ -39,12 +39,12 @@ export class SpPageProperties extends LitElement {
     }
   }
 
-  _getPropertyHtml(property) {
-    return html`<sp-page-property .property="${property}" @click="${() => this._selectPageProperties()}"></sp-page-property>`;
-  }
-
   _selectPageProperties() {
     localStore.dispatch(selectPageProperties());
+  }
+
+  _getPropertyHtml(property) {
+    return html`<sp-page-property .property="${property}" @click="${() => this._selectPageProperties()}"></sp-page-property>`;
   }
 }
 

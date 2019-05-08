@@ -1,6 +1,6 @@
 // @ISSUE: you'll want your own *-edit.js file for sp-page-detail.js
 import { html, LitElement } from '@polymer/lit-element';
-import { LOCALE_EN } from '../../../../../sp_locale/src/entities/en';
+import { LOCALE_EN } from '../../../../../sp_locale/src/entities/en.js';
 
 import '../../../../../sp_shared/src/components/sp-inline-text-field.js';
 

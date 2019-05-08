@@ -24,9 +24,6 @@ function _getInitialModel() {
             summary: 'Belgon leads the barrack guards as the captain over the defense of the city and its kingdom.',
             partitions: [
               {
-                type: 'hr'
-              },
-              {
                 type: 'h1',
                 value: 'This is an h1 header'
               },
