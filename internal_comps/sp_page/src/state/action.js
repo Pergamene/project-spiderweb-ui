@@ -1,6 +1,8 @@
-import { getPage } from "../services/interface/page";
-import { localStore } from "./store";
-import { Log } from "interface-handler/src/logger";
+import { getPage } from "../services/interface/page.js";
+import { localStore } from "./store.js";
+import { Log } from 'interface-handler/src/logger.js';
+import { generateMarkdown } from 'sp-markdown-partitioner/src/partitions-to-markdown.js';
+import { generatePartitions } from 'sp-markdown-partitioner/src/markdown-to-partitions.js';
 
 const COMPONENT_TAG = 'SP_PAGE';
 
@@ -51,19 +53,18 @@ function _getDraftPage(pageSectionSelection, page) {
         title: page.title,
         summary: page.summary
       };
-    // @ISSUE: you'll want to get the markdown from the partition here.
-    // case PAGE_SECTION_TYPE_DETAIL:
-    //   let markdown = blah blah blah
-    //   let details = [...page.details];
-    //   details[pageSectionSelection.id] = { 
-    //     ...page.details[pageSectionSelection.id],
-    //     markdown: markdown
-    //   };
-    //   delete details[pageSectionSelection.id].partitions;
-    //   return {
-    //     ...page,
-    //     details
-    //   };
+    case PAGE_SECTION_TYPE_DETAIL:
+      let details = [...page.details];
+      let markdown = generateMarkdown(details[pageSectionSelection.id].partitions);
+      details[pageSectionSelection.id] = { 
+        ...page.details[pageSectionSelection.id],
+        markdown: markdown
+      };
+      delete details[pageSectionSelection.id].partitions;
+      return {
+        ...page,
+        details
+      };
     default:
       Log.error(`unexpected page selection type: ${sectionType}`);
       return page;
@@ -87,19 +88,18 @@ function _getUndraftedPage(pageSectionSelection, draftPage) {
   switch (pageSectionSelection.type) {
     case PAGE_SECTION_TYPE_OVERVIEW:
       return draftPage;
-    // @ISSUE: you'll want to get the partitions from the markdown here.
-    // case PAGE_SECTION_TYPE_DETAIL:
-    //   let partitions = blah blah blah
-    //   let details = [...page.details];
-    //   details[pageSectionSelection.id] = { 
-    //     ...page.details[pageSectionSelection.id],
-    //     partitions: partitions
-    //   };
-    //   delete details[pageSectionSelection.id].markdown;
-    //   return {
-    //     ...page,
-    //     details
-    //   };
+    case PAGE_SECTION_TYPE_DETAIL:
+      let details = [...draftPage.details];
+      let partitions = generatePartitions(details[pageSectionSelection.id].markdown);
+      details[pageSectionSelection.id] = { 
+        ...draftPage.details[pageSectionSelection.id],
+        partitions: partitions
+      };
+      delete details[pageSectionSelection.id].markdown;
+      return {
+        ...draftPage,
+        details
+      };
     default:
       Log.error(`unexpected page selection type: ${sectionType}`);
       return draftPage;

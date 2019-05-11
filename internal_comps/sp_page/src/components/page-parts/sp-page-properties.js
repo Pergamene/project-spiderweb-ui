@@ -1,10 +1,10 @@
 import { html, LitElement } from '@polymer/lit-element';
-import { SpPageStyles } from '../sp-page-styles';
+import { SpPageStyles } from '../sp-page-styles.js';
 
 import './sp-page-property.js';
-import '../options-pane/sp-dropdown-btn';
+import '../options-pane/sp-dropdown-btn.js';
 import { localStore } from '../../state/store.js';
-import { selectPageProperties } from '../../state/action';
+import { selectPageProperties } from '../../state/action.js';
 
 export class SpPageProperties extends LitElement {
   render() {

@@ -1,6 +1,8 @@
 import { html, LitElement } from '@polymer/lit-element';
 import { LOCALE_EN } from '../../../../../sp_locale/src/entities/en.js';
 
+import '../../../../../sp_shared/src/components/sp-inline-text-field.js';
+
 export class SpPageSummaryEdit extends LitElement {
   render() {
     return html`

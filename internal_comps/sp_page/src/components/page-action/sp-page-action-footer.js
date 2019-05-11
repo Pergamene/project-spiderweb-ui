@@ -97,6 +97,8 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
       case 'properties':
         return LOCALE_EN.SP_PAGE_SELECTION.SELECTIONS.PROPERTIES;
       // @ISSUE: add one for detail
+      case 'detail':
+        return LOCALE_EN.SP_PAGE_SELECTION.SELECTIONS.DETAIL;
       default:
         Log.error(`Undefined selection type: ${selectionType}`);
         return 'UNDEFINED';
