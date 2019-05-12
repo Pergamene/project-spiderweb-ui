@@ -8,7 +8,7 @@ import '../page-parts/edit/sp-page-title-edit.js';
 
 import '../options-pane/sp-dropdown-btn.js';
 import { localStore } from '../../state/store.js';
-import { selectPageOverview, PAGE_SELECTION_ACTION_EDIT } from '../../state/action.js';
+import { selectPageOverview, PAGE_SELECTION_ACTION_EDIT, PAGE_SECTION_TYPE_DETAIL, PAGE_SECTION_TYPE_OVERVIEW } from '../../state/action.js';
 import { Log } from 'interface-handler/src/logger.js';
 
 export class SpPageOverview extends LitElement {
@@ -32,24 +32,22 @@ export class SpPageOverview extends LitElement {
   static get properties() { 
     return {
       page: { type: Object },
-      action: { type: String }
+      pageSectionSelection: { type: Object }
     }
   }
 
-  // @ISSUE: you'll want to do something similar for sp-page-detail.js but instead call selectPageDetail where detailId is the index of the detail item.
   _selectPageOverview() {
     localStore.dispatch(selectPageOverview());
   }
 
-  // @ISSUE: you'll want to do something similiar for <div page-pane> in sp-page-detail.js so that you have an edit view and a read view.
   _getPagePaneHtml() {
-    if (!this.action) {
+    if (!this.pageSectionSelection.action) {
       return html`
         <sp-page-title .page="${this.page}" @click="${() => this._selectPageOverview()}"></sp-page-title>
         <sp-page-summary .page="${this.page}" @click="${() => this._selectPageOverview()}"></sp-page-summary>
       `;
     }
-    switch (this.action) {
+    switch (this.pageSectionSelection.action && this.pageSectionSelection.type === PAGE_SECTION_TYPE_OVERVIEW) {
       case PAGE_SELECTION_ACTION_EDIT:
         return html`
           <sp-page-title-edit .page="${this.page}"></sp-page-title-edit>

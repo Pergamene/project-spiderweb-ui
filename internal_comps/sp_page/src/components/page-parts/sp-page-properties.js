@@ -35,7 +35,8 @@ export class SpPageProperties extends LitElement {
 
   static get properties() { 
     return {
-      page: { type: Object }
+      page: { type: Object },
+      pageSectionSelection: { type: Object }
     }
   }
 

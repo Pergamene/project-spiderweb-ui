@@ -36,7 +36,7 @@ class SpPage extends connect(localStore)(LitElement) {
 
   _getPageViewHtml() {
     if (this._page) {
-      return html`<sp-page-view .page="${this._page}" .action="${this._pageSectionSelection}"></sp-page-view>`;
+      return html`<sp-page-view .page="${this._page}" .pageSectionSelection="${this._pageSectionSelection}"></sp-page-view>`;
     }
     return html`<sp-loading-page-view></sp-loading-page-view>`;
   }

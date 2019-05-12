@@ -5,7 +5,7 @@ import './sp-page-detail.js';
 import './edit/sp-page-detail-edit.js';
 import '../options-pane/sp-dropdown-btn.js';
 import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
-import { PAGE_SELECTION_ACTION_EDIT } from '../../state/action.js';
+import { PAGE_SELECTION_ACTION_EDIT, PAGE_SECTION_TYPE_DETAIL } from '../../state/action.js';
 import { Log } from 'interface-handler/src/logger.js';
 
 export class SpPageDetails extends LitElement {
@@ -52,17 +52,17 @@ export class SpPageDetails extends LitElement {
   static get properties() { 
     return {
       page: { type: Object },
-      action: { type: String }
+      pageSectionSelection: { type: Object }
     }
   }
 
   _getDetailHtml(detail, index) {
-    if (!this.action) {
+    if (!this.pageSectionSelection.action) {
       return html`
         <sp-page-detail .detail="${detail}" .detailId="${index}"></sp-page-detail>
       `;
     }
-    switch (this.action) {
+    switch (this.pageSectionSelection.action && this.pageSectionSelection === PAGE_SECTION_TYPE_DETAIL) {
       case PAGE_SELECTION_ACTION_EDIT:
         return html`
           <sp-page-detail-edit .detail="${detail}"></sp-page-detail-edit>

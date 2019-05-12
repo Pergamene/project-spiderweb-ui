@@ -6,8 +6,6 @@ import '../../../../../sp_shared/src/components/sp-inline-text-field.js';
 
 export class SpPageDetailEdit extends LitElement {
   render() {
-    debugger;
-    // @TODO: is doing the .label this way okay/correct?
     return html`
       ${SpPageStyles}
       <style>

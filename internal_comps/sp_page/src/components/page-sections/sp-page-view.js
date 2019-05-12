@@ -35,10 +35,10 @@ export class SpPageView extends LitElement {
         
       </div>
       <div class="right-column">
-        <sp-page-overview .page="${this.page}" .action="${this.action}"></sp-page-overview>
-        <sp-page-properties .page="${this.page}" .action="${this.action}"></sp-page-properties>
-        <sp-page-details .page="${this.page}" .action="${this.action}"></sp-page-details>
-        <sp-page-relations .page="${this.page}" .action="${this.action}"></sp-page-relations>
+        <sp-page-overview .page="${this.page}" .pageSectionSelection="${this.pageSectionSelection}"></sp-page-overview>
+        <sp-page-properties .page="${this.page}" .pageSectionSelection="${this.pageSectionSelection}"></sp-page-properties>
+        <sp-page-details .page="${this.page}" .pageSectionSelection="${this.pageSectionSelection}"></sp-page-details>
+        <sp-page-relations .page="${this.page}" .pageSectionSelection="${this.pageSectionSelection}"></sp-page-relations>
       </div>
     `
   }
@@ -46,7 +46,7 @@ export class SpPageView extends LitElement {
   static get properties() { 
     return {
       page: { type: Object },
-      action: { type: String }
+      pageSectionSelection: { type: Object }
     }
   }
 }
