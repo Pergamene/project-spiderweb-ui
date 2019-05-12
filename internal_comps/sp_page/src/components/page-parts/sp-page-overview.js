@@ -32,7 +32,7 @@ export class SpPageOverview extends LitElement {
   static get properties() { 
     return {
       page: { type: Object },
-      pageSectionSelection: { type: Object }
+      selection: { type: Object }
     }
   }
 
@@ -41,13 +41,13 @@ export class SpPageOverview extends LitElement {
   }
 
   _getPagePaneHtml() {
-    if (!this.pageSectionSelection.action) {
+    if (!this.selection.action || this.selection.type !== PAGE_SECTION_TYPE_OVERVIEW) {
       return html`
         <sp-page-title .page="${this.page}" @click="${() => this._selectPageOverview()}"></sp-page-title>
         <sp-page-summary .page="${this.page}" @click="${() => this._selectPageOverview()}"></sp-page-summary>
       `;
     }
-    switch (this.pageSectionSelection.action && this.pageSectionSelection.type === PAGE_SECTION_TYPE_OVERVIEW) {
+    switch (this.selection.action) {
       case PAGE_SELECTION_ACTION_EDIT:
         return html`
           <sp-page-title-edit .page="${this.page}"></sp-page-title-edit>

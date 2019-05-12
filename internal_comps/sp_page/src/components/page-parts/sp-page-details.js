@@ -52,17 +52,17 @@ export class SpPageDetails extends LitElement {
   static get properties() { 
     return {
       page: { type: Object },
-      pageSectionSelection: { type: Object }
+      selection: { type: Object }
     }
   }
 
   _getDetailHtml(detail, index) {
-    if (!this.pageSectionSelection.action) {
+    if (!this.selection.action || this.selection.type !== PAGE_SECTION_TYPE_DETAIL) {
       return html`
         <sp-page-detail .detail="${detail}" .detailId="${index}"></sp-page-detail>
       `;
     }
-    switch (this.pageSectionSelection.action && this.pageSectionSelection === PAGE_SECTION_TYPE_DETAIL) {
+    switch (this.selection.action) {
       case PAGE_SELECTION_ACTION_EDIT:
         return html`
           <sp-page-detail-edit .detail="${detail}"></sp-page-detail-edit>
