@@ -36,7 +36,7 @@ class SpPage extends connect(localStore)(LitElement) {
 
   _getPageViewHtml() {
     if (this._page) {
-      return html`<sp-page-view .page="${this._page}" .pageSectionSelection="${this._pageSectionSelection}"></sp-page-view>`;
+      return html`<sp-page-view .page="${this._page}" .selection="${this._pageSectionSelection}"></sp-page-view>`;
     }
     return html`<sp-loading-page-view></sp-loading-page-view>`;
   }
@@ -53,14 +53,14 @@ class SpPage extends connect(localStore)(LitElement) {
       return;
     }
     this._pageSectionSelection = state.sp_page.ui.pageSectionSelection;
-    if (this._pageSectionSelection) {
-      switch(this._pageSectionSelection) {
+    if (this._pageSectionSelection && this._pageSectionSelection.action) {
+      switch(this._pageSectionSelection.action) {
         case PAGE_SELECTION_ACTION_EDIT:
           // @NOTE: we use the page draft as it is a copy and has things like markdown from partition for details, etc.
           this._page = state.sp_page.ui.draftPage;
           break;
         default:
-          Log.error(`unexepcted page action: ${this._pageSectionSelection}`);
+          Log.error(`unexepcted page action: ${this._pageSectionSelection.action}`);
       }
     }
   }
@@ -70,7 +70,8 @@ class SpPage extends connect(localStore)(LitElement) {
    */
   _activelyWorkingInEditMode(state) {
     return (
-      this._pageId == state.root.route.pageId
+      this._pageSectionSelection
+      && this._pageId == state.root.route.pageId
       && this._pageSectionSelection.action == state.sp_page.ui.pageSectionSelection.action
       && this._pageSectionSelection.action == PAGE_SELECTION_ACTION_EDIT
     );
