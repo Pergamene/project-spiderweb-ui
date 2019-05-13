@@ -13,3 +13,14 @@ export const getPage = (pageId) => {
       return InterfaceState.invalid();
   }
 };
+
+export const setDetail = (pageId, detailId, detail) => {
+  switch (InterfaceState.get()) {
+    case INTERFACE_STATE.HTTP:
+      return CallHttp.setDetail(pageId, detailId, detail);
+    case INTERFACE_STATE.MOCK:
+      return CallMock.setDetail(pageId, detailId, detail);
+    default:
+      return InterfaceState.invalid();
+  }
+};
