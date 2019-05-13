@@ -171,7 +171,7 @@ function _getInitialModel() {
                 link: 'https://ae01.alicdn.com/kf/HTB1Fb9zNpXXXXX8XXXXq6xXFXXXU/fantasy-art-paintings-landscapes-architecture-buildings-castles-surreal-waterrfalls-nature-scenic-Home-Decoration-Canvas-Poster.jpg'
               },
               {
-                type: 'quote',
+                type: 'quotes',
                 partitions: [
                   {
                     type: 'text',
@@ -191,11 +191,11 @@ function _getInitialModel() {
                 type: 'hr'
               },
               {
-                type: 'quote',
+                type: 'quotes',
                 value: 'or quoted paragraphs\nif it\'s more than one line'
               },
               {
-                type: 'quote',
+                type: 'quotes',
                 partitions: [
                   {
                     type: 'text',
