@@ -8,7 +8,7 @@ import '../page-parts/edit/sp-page-title-edit.js';
 
 import '../options-pane/sp-dropdown-btn.js';
 import { localStore } from '../../state/store.js';
-import { selectPageOverview, PAGE_SELECTION_ACTION_EDIT, PAGE_SECTION_TYPE_DETAIL, PAGE_SECTION_TYPE_OVERVIEW } from '../../state/action.js';
+import { selectPageOverview, PAGE_SELECTION_ACTION_EDIT, PAGE_SECTION_TYPE_OVERVIEW } from '../../state/action.js';
 import { Log } from 'interface-handler/src/logger.js';
 
 export class SpPageOverview extends LitElement {
