@@ -1,9 +1,12 @@
 import { html, LitElement } from '@polymer/lit-element';
-import { SpPageStyles } from '../sp-page-styles';
+import { SpPageStyles } from '../sp-page-styles.js';
 
 import './sp-page-detail.js';
-import '../options-pane/sp-dropdown-btn';
-import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values';
+import './edit/sp-page-detail-edit.js';
+import '../options-pane/sp-dropdown-btn.js';
+import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
+import { PAGE_SELECTION_ACTION_EDIT, PAGE_SECTION_TYPE_DETAIL } from '../../state/action.js';
+import { Log } from 'interface-handler/src/logger.js';
 
 export class SpPageDetails extends LitElement {
   render() {
@@ -42,18 +45,32 @@ export class SpPageDetails extends LitElement {
           <h2>DETAILS</h2>
         </div>
       </div>
-      ${this.page.details.map(detail => this._getDetailHtml(detail))}
+      ${this.page.details.map((detail, index) => this._getDetailHtml(detail, index))}
     `
   }
 
   static get properties() { 
     return {
-      page: { type: Object }
+      page: { type: Object },
+      selection: { type: Object }
     }
   }
 
-  _getDetailHtml(detail) {
-    return html`<sp-page-detail .detail="${detail}"></sp-page-detail>`;
+  _getDetailHtml(detail, index) {
+    if (!this.selection.action || this.selection.type !== PAGE_SECTION_TYPE_DETAIL) {
+      return html`
+        <sp-page-detail .detail="${detail}" .detailId="${index}"></sp-page-detail>
+      `;
+    }
+    switch (this.selection.action) {
+      case PAGE_SELECTION_ACTION_EDIT:
+        return html`
+          <sp-page-detail-edit .detail="${detail}"></sp-page-detail-edit>
+        `;
+      default:
+        Log.error(`unexpected action: ${this.action}`);
+        return html``;
+    }
   }
 }
 

@@ -8,7 +8,6 @@ import './page-action/sp-page-action-footer.js';
 import { SpPageStyles } from './sp-page-styles.js';
 import { retrievePage, PAGE_SELECTION_ACTION_EDIT, savePageEdits } from '../state/action.js';
 import { Log } from 'interface-handler/src/logger';
-import { deepCopy } from 'rhyeen-utils/util';
 
 class SpPage extends connect(localStore)(LitElement) {
   render() {
@@ -31,13 +30,13 @@ class SpPage extends connect(localStore)(LitElement) {
     return {
       _pageId: { type: String },
       _page: { type: Object },
-      _pageAction: { type: String }
+      _pageSectionSelection: { type: String }
     }
   }
 
   _getPageViewHtml() {
     if (this._page) {
-      return html`<sp-page-view .page="${this._page}" .action="${this._pageAction}"></sp-page-view>`;
+      return html`<sp-page-view .page="${this._page}" .selection="${this._pageSectionSelection}"></sp-page-view>`;
     }
     return html`<sp-loading-page-view></sp-loading-page-view>`;
   }
@@ -53,15 +52,15 @@ class SpPage extends connect(localStore)(LitElement) {
       localStore.dispatch(retrievePage(this._pageId));
       return;
     }
-    this._pageAction = state.sp_page.ui.pageSectionSelection.action;
-    if (this._pageAction) {
-      switch(this._pageAction) {
+    this._pageSectionSelection = state.sp_page.ui.pageSectionSelection;
+    if (this._pageSectionSelection && this._pageSectionSelection.action) {
+      switch(this._pageSectionSelection.action) {
         case PAGE_SELECTION_ACTION_EDIT:
-          // @NOTE: we deep copy the page so this._page can act like an edit draft.
-          this._page = deepCopy(this._page);
+          // @NOTE: we use the page draft as it is a copy and has things like markdown from partition for details, etc.
+          this._page = state.sp_page.ui.draftPage;
           break;
         default:
-          Log.error(`unexepcted page action: ${this._pageAction}`);
+          Log.error(`unexepcted page action: ${this._pageSectionSelection.action}`);
       }
     }
   }
@@ -71,9 +70,10 @@ class SpPage extends connect(localStore)(LitElement) {
    */
   _activelyWorkingInEditMode(state) {
     return (
-      this._pageId == state.root.route.pageId
-      && this._pageAction == state.sp_page.ui.pageSectionSelection.action
-      && this._pageAction == PAGE_SELECTION_ACTION_EDIT
+      this._pageSectionSelection
+      && this._pageId == state.root.route.pageId
+      && this._pageSectionSelection.action == state.sp_page.ui.pageSectionSelection.action
+      && this._pageSectionSelection.action == PAGE_SELECTION_ACTION_EDIT
     );
   }
 
