@@ -28,6 +28,7 @@ export const LOCALE_EN = {
     SELECTIONS: {
       OVERVIEW: 'Page Overview',
       PROPERTIES: 'Page Properties',
+      DETAIL: 'Page Detail',
       NONE: 'None'
     }
   },
@@ -37,6 +38,15 @@ export const LOCALE_EN = {
     },
     PAGE_SUMMARY: {
       LABEL: 'Summary'
+    },
+    DETAIL_TITLE: {
+      LABEL: 'Detail Name'
+    },
+    DETAIL_SUMMARY: {
+      LABEL: 'Summary'
+    },
+    DETAIL_MARKDOWN: {
+      LABEL: 'Detail Markdown'
     }
   }
 };

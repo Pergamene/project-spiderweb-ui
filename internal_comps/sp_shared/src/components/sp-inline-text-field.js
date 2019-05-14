@@ -25,7 +25,8 @@ class SpInlineTextField extends LitElement {
         }
 
         .field {
-          line-height: 26px;          
+          line-height: 26px;    
+          white-space: pre-wrap;      
         }
 
         .field, input {

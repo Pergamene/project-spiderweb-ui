@@ -1,15 +1,15 @@
 import { html, LitElement } from '@polymer/lit-element';
-import { SpPageStyles } from '../sp-page-styles';
+import { SpPageStyles } from '../sp-page-styles.js';
 
 import '../page-parts/sp-page-title.js';
 import '../page-parts/sp-page-summary.js';
 import '../page-parts/edit/sp-page-summary-edit.js';
 import '../page-parts/edit/sp-page-title-edit.js';
 
-import '../options-pane/sp-dropdown-btn';
+import '../options-pane/sp-dropdown-btn.js';
 import { localStore } from '../../state/store.js';
-import { selectPageOverview, PAGE_SELECTION_ACTION_EDIT } from '../../state/action';
-import { Log } from 'interface-handler/src/logger';
+import { selectPageOverview, PAGE_SELECTION_ACTION_EDIT, PAGE_SECTION_TYPE_OVERVIEW } from '../../state/action.js';
+import { Log } from 'interface-handler/src/logger.js';
 
 export class SpPageOverview extends LitElement {
   render() {
@@ -32,7 +32,7 @@ export class SpPageOverview extends LitElement {
   static get properties() { 
     return {
       page: { type: Object },
-      action: { type: String }
+      selection: { type: Object }
     }
   }
 
@@ -41,13 +41,13 @@ export class SpPageOverview extends LitElement {
   }
 
   _getPagePaneHtml() {
-    if (!this.action) {
+    if (!this.selection.action || this.selection.type !== PAGE_SECTION_TYPE_OVERVIEW) {
       return html`
         <sp-page-title .page="${this.page}" @click="${() => this._selectPageOverview()}"></sp-page-title>
         <sp-page-summary .page="${this.page}" @click="${() => this._selectPageOverview()}"></sp-page-summary>
       `;
     }
-    switch (this.action) {
+    switch (this.selection.action) {
       case PAGE_SELECTION_ACTION_EDIT:
         return html`
           <sp-page-title-edit .page="${this.page}"></sp-page-title-edit>

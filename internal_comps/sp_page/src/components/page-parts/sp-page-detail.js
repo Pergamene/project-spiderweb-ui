@@ -1,10 +1,12 @@
 import { html, LitElement } from '@polymer/lit-element';
-import { SpPageStyles } from '../sp-page-styles';
+import { SpPageStyles } from '../sp-page-styles.js';
 
 import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 
 import '../partitions/sp-page-partition.js';
-import '../options-pane/sp-dropdown-btn';
+import '../options-pane/sp-dropdown-btn.js';
+import { localStore } from '../../state/store.js';
+import { selectPageDetail } from '../../state/action.js';
 
 export class SpPageDetail extends LitElement {
   render() {
@@ -32,7 +34,7 @@ export class SpPageDetail extends LitElement {
       <div options-pane>
         <sp-dropdown-btn revealed></sp-dropdown-btn>
       </div>
-      <div page-pane>
+      <div page-pane @click="${() => this._selectPageDetail()}">
         <h1>${this.detail.title}</h1>
         <p class="summary">${this.detail.summary}</p>
         ${this.detail.partitions.map(partition => this._getPartitionHtml(partition))}
@@ -42,8 +44,13 @@ export class SpPageDetail extends LitElement {
 
   static get properties() { 
     return {
-      detail: { type: Object }
+      detail: { type: Object },
+      detailId: { type: Number }
     }
+  }
+
+  _selectPageDetail() {
+    localStore.dispatch(selectPageDetail(this.detailId))
   }
 
   _getPartitionHtml(partition) {

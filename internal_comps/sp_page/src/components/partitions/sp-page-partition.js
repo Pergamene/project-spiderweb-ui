@@ -52,7 +52,7 @@ export class SpPagePartition extends LitElement {
           padding-bottom: 10px;
         }
 
-        .quote {
+        .quotes {
           font-size: 14px;
           line-height: 24px;
           border-left: 2px solid var(${APP_COLORS.OFF_BLACK});
@@ -105,8 +105,8 @@ export class SpPagePartition extends LitElement {
         return html`<hr>`;
       case 'p':
         return html`<p><sp-inner-partition class="${partitionClass} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition></p>`;
-      case 'quote':
-        return this._getQuoteHtml();
+      case 'quotes':
+        return this._getQuotesHtml();
       default:
         return html`<div class="${partitionClass} outer-partition">${this.partition.value}</div>`;
     } 
@@ -124,7 +124,7 @@ export class SpPagePartition extends LitElement {
     }
   }
 
-  _getQuoteHtml() {
+  _getQuotesHtml() {
     if(this.partition.partitions) {
       return html`<sp-inner-partition class="${this.partition.type} outer-partition" .partitions="${this.partition.partitions}"></sp-inner-partition>`;
     } else {
