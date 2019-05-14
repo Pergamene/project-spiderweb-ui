@@ -4,6 +4,7 @@ function _getInitialModel() {
   return {
     pages: {
       'PG_123456789012': {
+        id: 'PG_123456789012',
         title: 'Talendor, the Ancient Resting Place',
         summary: 'Long ago, the Talendorians lived together in harmony. Then, everything changed when the Fire Plane attacked.',
         properties: [

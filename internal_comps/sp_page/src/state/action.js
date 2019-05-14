@@ -3,6 +3,7 @@ import { localStore } from "./store.js";
 import { Log } from 'interface-handler/src/logger.js';
 import { generateMarkdown } from 'sp-markdown-partitioner/src/partitions-to-markdown.js';
 import { generatePartitions } from 'sp-markdown-partitioner/src/markdown-to-partitions.js';
+import { setDetail } from "../services/interface/page.js";
 
 const COMPONENT_TAG = 'SP_PAGE';
 
@@ -54,21 +55,25 @@ function _getDraftPage(pageSectionSelection, page) {
         summary: page.summary
       };
     case PAGE_SECTION_TYPE_DETAIL:
-      let details = [...page.details];
-      let markdown = generateMarkdown(details[pageSectionSelection.id].partitions);
-      details[pageSectionSelection.id] = { 
-        ...page.details[pageSectionSelection.id],
-        markdown: markdown
-      };
-      delete details[pageSectionSelection.id].partitions;
-      return {
-        ...page,
-        details
-      };
+      return _switchFromPartitionsToMarkdown(pageSectionSelection, page);
     default:
       Log.error(`unexpected page selection type: ${sectionType}`);
       return page;
   }
+}
+
+function _switchFromPartitionsToMarkdown(pageSectionSelection, page) {
+  let details = [...page.details];
+  let markdown = generateMarkdown(details[pageSectionSelection.id].partitions);
+  details[pageSectionSelection.id] = { 
+    ...page.details[pageSectionSelection.id],
+    markdown: markdown
+  };
+  delete details[pageSectionSelection.id].partitions;
+  return {
+    ...page,
+    details
+  };
 }
 
 export const EDIT_PAGE_SELECTION = _createRequestRaw('EDIT_PAGE_SELECTION');
@@ -81,7 +86,18 @@ export const _setDraftPage = (page) => _action(SET_DRAFT_PAGE, {page});
 export const savePageEdits = (draftPage) => (dispatch) => {
   let state = localStore.getState();
   let page = _getUndraftedPage(state.sp_page.ui.pageSectionSelection, draftPage);
-  dispatch(_savePageEdits(page));
+  _savePageEditsToBackend(state.sp_page.ui.pageSectionSelection, page)
+  .then(() => {
+    dispatch(_savePageEdits(page));
+  }, (err) => {
+    Log.error('failed to save page edits to backend:');
+    Log.error(err);
+    // @TODO: report failure to save to user, with snackbar to retry.
+  });
+}
+
+function _savePageEditsToBackend(pageSectionSelection, page) {
+  return setDetail(page.id, pageSectionSelection.id, page.details[pageSectionSelection.id]);
 }
 
 function _getUndraftedPage(pageSectionSelection, draftPage) {
@@ -89,21 +105,25 @@ function _getUndraftedPage(pageSectionSelection, draftPage) {
     case PAGE_SECTION_TYPE_OVERVIEW:
       return draftPage;
     case PAGE_SECTION_TYPE_DETAIL:
-      let details = [...draftPage.details];
-      let partitions = generatePartitions(details[pageSectionSelection.id].markdown);
-      details[pageSectionSelection.id] = { 
-        ...draftPage.details[pageSectionSelection.id],
-        partitions: partitions
-      };
-      delete details[pageSectionSelection.id].markdown;
-      return {
-        ...draftPage,
-        details
-      };
+      return _switchFromMarkdownToPartitions(pageSectionSelection, draftPage);
     default:
       Log.error(`unexpected page selection type: ${sectionType}`);
       return draftPage;
   }
+}
+
+function _switchFromMarkdownToPartitions(pageSectionSelection, page) {
+  let details = [...page.details];
+  let partitions = generatePartitions(details[pageSectionSelection.id].markdown);
+  details[pageSectionSelection.id] = { 
+    ...page.details[pageSectionSelection.id],
+    partitions: partitions
+  };
+  delete details[pageSectionSelection.id].markdown;
+  return {
+    ...page,
+    details
+  };
 }
 
 export const SAVE_PAGE_EDITS = _createRequestRaw('SAVE_PAGE_EDITS');
