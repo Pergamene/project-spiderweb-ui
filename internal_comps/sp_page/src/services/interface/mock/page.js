@@ -13,3 +13,14 @@ export const getPage = (pageId) => {
     }, CALLBACK_TIME.POST);
   });
 };
+
+export const setDetail = (pageId, detailId, detail) => {
+  return new Promise((resolve) => {
+    Mock.debugRequest(setDetail, { pageId, detailId, detail });
+    setTimeout(() => {
+      PageController.setPageDetail(pageId, detailId, detail);
+      Mock.debugSuccessfulResponse(setDetail);
+      resolve();
+    }, CALLBACK_TIME.POST);
+  });
+};
