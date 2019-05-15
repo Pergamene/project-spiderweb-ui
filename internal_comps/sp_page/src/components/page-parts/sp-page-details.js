@@ -59,7 +59,7 @@ export class SpPageDetails extends LitElement {
   _getDetailHtml(detail, index) {
     if (!this.selection.action || this.selection.type !== PAGE_SECTION_TYPE_DETAIL) {
       return html`
-        <sp-page-detail .detail="${detail}" .detailId="${index}"></sp-page-detail>
+        <sp-page-detail .detail="${detail}" .detailIndex="${index}"></sp-page-detail>
       `;
     }
     switch (this.selection.action) {

@@ -33,7 +33,7 @@ export const PAGE_SECTION_TYPE_DETAIL = 'detail';
 export const PAGE_SECTION_TYPE_OVERVIEW = 'overview';
 export const PAGE_SECTION_TYPE_PROPERTIES = 'properties';
 export const SELECT_PAGE_SECTION = _createRequestRaw('SELECT_PAGE_SECTION');
-export const selectPageDetail = (detailId) => _action(SELECT_PAGE_SECTION, {id: detailId, sectionType: PAGE_SECTION_TYPE_DETAIL});
+export const selectPageDetail = (detailIndex) => _action(SELECT_PAGE_SECTION, {id: detailIndex, sectionType: PAGE_SECTION_TYPE_DETAIL});
 export const selectPageOverview = () => _action(SELECT_PAGE_SECTION, {sectionType: PAGE_SECTION_TYPE_OVERVIEW});
 export const selectPageProperties = () => _action(SELECT_PAGE_SECTION, {sectionType: PAGE_SECTION_TYPE_PROPERTIES});
 
@@ -97,7 +97,7 @@ export const savePageEdits = (draftPage) => (dispatch) => {
 }
 
 function _savePageEditsToBackend(pageSectionSelection, page) {
-  return setDetail(page.id, pageSectionSelection.id, page.details[pageSectionSelection.id]);
+  return setDetail(page.id, pageSectionSelection.id, page.details[pageSectionSelection.id].id);
 }
 
 function _getUndraftedPage(pageSectionSelection, draftPage) {
