@@ -1,4 +1,5 @@
 import { initializeModel, Model } from '../models/model.js';
+import { Log } from 'interface-handler/src/logger';
 
 export const initializePageModel = () => {
   initializeModel();
@@ -9,5 +10,11 @@ export const getPage = (pageId) => {
 }
 
 export const setPageDetail = (pageId, detailId, detail) => {
-  return Model.pages[pageId].details[detailId] = detail;
+  for (let i = 0; i < Model.pages[pageId].details.length; i++) {
+    if (detailId === Model.pages[pageId].details[i].id) {
+      Model.pages[pageId].details[i] = detail;
+      return;
+    }
+  }
+  Log.error(`unable to find the detailId: ${detailId}`);
 }

@@ -21,6 +21,7 @@ function _getInitialModel() {
         ],
         details: [
           {
+            id: 'DT_123456789012',
             title: 'The Bannerfold Barracks',
             summary: 'Belgon leads the barrack guards as the captain over the defense of the city and its kingdom.',
             partitions: [

@@ -45,12 +45,12 @@ export class SpPageDetail extends LitElement {
   static get properties() { 
     return {
       detail: { type: Object },
-      detailId: { type: Number }
+      detailIndex: { type: Number }
     }
   }
 
   _selectPageDetail() {
-    localStore.dispatch(selectPageDetail(this.detailId))
+    localStore.dispatch(selectPageDetail(this.detailIndex))
   }
 
   _getPartitionHtml(partition) {
