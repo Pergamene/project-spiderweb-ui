@@ -1,30 +1,12 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 import { SpIconsStyles, DownHoverIcon } from '../../../../sp_shared/src/entities/sp-icons.js';
 
 class SpDropdownBtn extends LitElement {
-  render() {
-    return html`
-      ${this._getRevealedHTML()}
-    `;
-  };
-  
-  static get properties() { 
-    return {
-      selected: { type: Boolean },
-      revealed: { type: Boolean }
-    };
-  };
-
-  _getRevealedHTML() {
-    if (!this.revealed) {
-      return '';
-    }
-    return html`
-    ${SpIconsStyles}
-    <style>
+  static get styles() {
+    return [SpIconsStyles, css`
       [svg-icon] {
-        fill: var(${APP_COLORS.NEAR_WHITE_BORDER});
+        fill: ${APP_COLORS.NEAR_WHITE_BORDER};
       }
 
       button {
@@ -45,17 +27,37 @@ class SpDropdownBtn extends LitElement {
 
       button:focus {
         outline: 0;
-        background-color: var(${APP_COLORS.BASE_WHITE_FOCUS});
+        background-color: ${APP_COLORS.BASE_WHITE_FOCUS};
       }
 
       button:hover [svg-icon] {
-        fill: var(${APP_COLORS.HINT_GRAY});
+        fill: ${APP_COLORS.HINT_GRAY};
       }
 
       button:focus [svg-icon] {
-        fill: var(${APP_COLORS.HINT_GRAY});
+        fill: ${APP_COLORS.HINT_GRAY};
       }
-    </style>
+    `];
+  }
+
+  render() {
+    return html`
+      ${this._getRevealedHTML()}
+    `;
+  };
+  
+  static get properties() { 
+    return {
+      selected: { type: Boolean },
+      revealed: { type: Boolean }
+    };
+  };
+
+  _getRevealedHTML() {
+    if (!this.revealed) {
+      return '';
+    }
+    return html`
     <button>${this._getBtnIcon()}</button>
     `;
   }
@@ -64,4 +66,4 @@ class SpDropdownBtn extends LitElement {
     return DownHoverIcon();
   }
 }
-window.customElements.define('sp-dropdown-btn', SpDropdownBtn);
+customElements.define('sp-dropdown-btn', SpDropdownBtn);

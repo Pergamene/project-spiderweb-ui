@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement, css } from 'lit-element';
 import { SpPageStyles } from '../sp-page-styles.js';
 
 import '../page-parts/sp-page-title.js';
@@ -12,21 +12,23 @@ import { selectPageOverview, PAGE_SELECTION_ACTION_EDIT, PAGE_SECTION_TYPE_OVERV
 import { Log } from 'interface-handler/src/logger.js';
 
 export class SpPageOverview extends LitElement {
+  static get styles() {
+    return [SpPageStyles, css`
+      :host {
+        display: flex;
+      }
+    `];
+  }
+
   render() {
     return html`
-      ${SpPageStyles}
-      <style>
-        :host {
-          display: flex;
-        }
-      </style>
       <div options-pane>
         <sp-dropdown-btn revealed></sp-dropdown-btn>        
       </div>
       <div page-pane>
         ${this._getPagePaneHtml()}
       </div>
-    `
+    `;
   }
 
   static get properties() { 
@@ -60,4 +62,4 @@ export class SpPageOverview extends LitElement {
   }
 }
 
-window.customElements.define('sp-page-overview', SpPageOverview);
+customElements.define('sp-page-overview', SpPageOverview);

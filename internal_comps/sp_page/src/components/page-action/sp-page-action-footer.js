@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement, css } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 import { localStore } from '../../state/store.js';
 
@@ -13,6 +13,24 @@ import { editPageSelection, PAGE_SELECTION_ACTION_EDIT, savePageEdits, cancelPag
 import { ITEM_TYPE } from './sp-page-action-items.js';
 
 export class SpPageActionFooter extends connect(localStore)(LitElement) {
+  static get styles() {
+    return css`
+      :host {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 8px;
+        background-color: ${APP_COLORS.NEAR_BLACK};
+        color: ${APP_COLORS.BASE_WHITE};
+        height: ${NAV.FOOTER.HEIGHT};
+      }
+    `;
+  }
+
   render() {
     return this._getHtml();
   }
@@ -22,7 +40,7 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
       _selectionName: { type: String },
       _selectionActionItems: { type: Array },
       _selectionAction: { type: String }
-    }
+    };
   }
 
   stateChanged(state) {
@@ -66,21 +84,6 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
       return html``;
     }
     return html`
-      <style>
-        :host {
-          position: fixed;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 8px;
-          background-color: var(${APP_COLORS.NEAR_BLACK});
-          color: var(${APP_COLORS.BASE_WHITE});
-          height: var(${NAV.FOOTER.HEIGHT});
-        }
-      </style>
       <div class="left-items">
         <sp-page-action-selection .name="${this._selectionName}" .action="${this._selectionAction}"></sp-page-action-selection>
       </div>
@@ -120,4 +123,4 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
   }
 }
 
-window.customElements.define('sp-page-action-footer', SpPageActionFooter);
+customElements.define('sp-page-action-footer', SpPageActionFooter);

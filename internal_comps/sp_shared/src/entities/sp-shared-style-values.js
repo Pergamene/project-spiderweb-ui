@@ -1,30 +1,33 @@
+import { css } from 'lit-element';
+
 export const APP_COLORS = {
-  NEAR_BLACK: '--sp_shared-near-black',
-  NEAR_BLACK_FOCUS: '--sp_shared-near-black-focus',
-  NEAR_WHITE: '--sp_shared-near-white',
-  BASE_WHITE: '--sp_shared-base-white',
-  BASE_WHITE_FOCUS: '--sp_shared-base-white-focus',
-  NEAR_WHITE_BORDER: '--sp_shared-near-white-border',
-  OFF_BLACK: '--sp_shared-off-black',
-  HINT_GRAY: '--sp_shared-hint-gray',
-  LINK_BLUE: '--sp_shared-link-blue',
-  LINK_HOVER: '--sp_shared-link-hover',
-  LINK_VISITED: '--sp_shared-link-visited',
-  RELATION_PINK: '--sp_shared-relation-pink',
-  RELATION_VISITED: '--sp_shared-realtion-visited',
-  IMAGE_CAPTION: '--sp_shared-image-caption',
-  OVERLAY_BLACK: '--sp_shared-overlay-black',
-  OVERLAY_WHITE: '--sp_shared-overlay-white',
-  SVG_DEFAULT: '--sp_shared-default-svg-color'
+  NEAR_BLACK: css`#222426`,
+  NEAR_BLACK_FOCUS: css`#333537`,
+  NEAR_WHITE: css`#F7FBFF`,
+  BASE_WHITE: css`#FFF`,
+  BASE_WHITE_FOCUS: css`#EEE`,
+  NEAR_WHITE_BORDER: css`#E7EBEF`,
+  OFF_BLACK: css`#525456`,
+  HINT_GRAY: css`#798183`,
+  LINK_BLUE: css`#5472D3`,
+  LINK_HOVER: css`#0d47a1`,
+  LINK_VISITED: css`#002171`,
+  RELATION_PINK: css`#BC477B`,
+  RELATION_VISITED: css`#560027`,
+  IMAGE_CAPTION: css`#666666`,
+  OVERLAY_BLACK: css`rgba(0, 0, 0, 0.5)`,
+  OVERLAY_WHITE: css`rgba(255, 255, 255, 0.8)`
 };
 
 export const SHADOW_ELEVATIONS = {
   LEVEL_1: {
-    BASE: '--sp_shared-elevation-1',
-    INSET: '--sp_shared-elevation-n1',
-    HOVER: '--sp_shared-elevation-h1'
+    BASE: css`1px 1px 5px rgba(0, 0, 0, 0.4)`,
+    INSET: css`inset 1px 1px 5px rgba(0, 0, 0, 0.4)`,
+    HOVER: css`
+      1px 1px 5px rgba(0, 0, 0, 0.4),
+      inset 0px 0px 80px rgba(0, 0, 0, 0.1)`
   },
   SIDE_BAR: {
-    BASE: '--sp_shared-elevation-side-bar'
+    BASE: css`-2px 0px 10px rgba(0, 0, 0, 0.1)`
   }
 };

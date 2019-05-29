@@ -1,29 +1,32 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement, css } from 'lit-element';
 
 import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 
 export class SpPageSummary extends LitElement {
+  static get styles() {
+    return css`
+      :host {
+        font-size: 14px;
+        line-height: 24px;
+        padding: 5px 10px;
+        background-size: 100%;
+        border-left: 2px solid ${APP_COLORS.OFF_BLACK};
+        background-color: ${APP_COLORS.NEAR_WHITE};
+      }
+    `;
+  }
+
   render() {
     return html`
-      <style>
-        :host {
-          font-size: 14px;
-          line-height: 24px;
-          border-left: 2px solid var(${APP_COLORS.OFF_BLACK});
-          padding: 5px 10px;
-          background-size: 100%;
-          background-color: var(${APP_COLORS.NEAR_WHITE});
-        }
-      </style>
       ${this.page.summary}
-    `
+    `;
   }
 
   static get properties() { 
     return {
       page: { type: Object }
-    }
+    };
   }
 }
 
-window.customElements.define('sp-page-summary', SpPageSummary);
+customElements.define('sp-page-summary', SpPageSummary);

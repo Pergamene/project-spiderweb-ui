@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement, css } from 'lit-element';
 import { NAV, CONTENT_PANE, EDIT_PANE, PAGE_PANE } from '../sp-page-styles';
 
 import '../page-parts/sp-page-overview.js';
@@ -6,31 +6,34 @@ import '../page-parts/sp-page-properties.js';
 import '../page-parts/sp-page-details.js';
 
 export class SpPageView extends LitElement {
+  static get styles() {
+    return css`
+      :host {
+        display: flex;
+        width: 100vw;
+        justify-content: center;
+        margin-top: ${NAV.HEADER.HEIGHT};
+        height: calc(100vh - ${NAV.HEADER.HEIGHT} - ${NAV.FOOTER.HEIGHT});
+      }
+
+      .left-column {
+        display: flex;
+        flex-direction: column;
+        width: ${CONTENT_PANE.WIDTH};
+        height: calc(100vh - ${NAV.HEADER.HEIGHT} - ${NAV.FOOTER.HEIGHT});
+      }
+
+      .right-column {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        max-width: calc(${PAGE_PANE.WIDTH} + ${EDIT_PANE.WIDTH});
+      }
+    `;
+  }
+
   render() {
     return html`
-      <style>
-        :host {
-          display: flex;
-          width: 100vw;
-          margin-top: var(${NAV.HEADER.HEIGHT});
-          height: calc(100vh - var(${NAV.HEADER.HEIGHT}) - var(${NAV.FOOTER.HEIGHT}));
-          justify-content: center;
-        }
-
-        .left-column {
-          display: flex;
-          width: var(${CONTENT_PANE.WIDTH});
-          height: calc(100vh - var(${NAV.HEADER.HEIGHT}) - var(${NAV.FOOTER.HEIGHT}));
-          flex-direction: column;
-        }
-
-        .right-column {
-          display: flex;
-          max-width: calc(var(${PAGE_PANE.WIDTH}) + var(${EDIT_PANE.WIDTH}));
-          flex-direction: column;
-          padding: 0 20px;
-        }
-      </style>
       <div class="left-column">
         
       </div>
@@ -40,15 +43,15 @@ export class SpPageView extends LitElement {
         <sp-page-details .page="${this.page}" .selection="${this.selection}"></sp-page-details>
         <sp-page-relations .page="${this.page}" .selection="${this.selection}"></sp-page-relations>
       </div>
-    `
+    `;
   }
 
   static get properties() { 
     return {
       page: { type: Object },
       selection: { type: Object }
-    }
+    };
   }
 }
 
-window.customElements.define('sp-page-view', SpPageView);
+customElements.define('sp-page-view', SpPageView);

@@ -1,4 +1,4 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 import { SHADOW_ELEVATIONS } from './sp-shared-style-values.js';
 
 export const BTN_COLORS = {
@@ -27,8 +27,7 @@ export const BTN_COLORS = {
 };
 
 // @NOTE: imported with SpSharedStyles. Do not import otherwise.
-export const SpBtnBaseStyles = html`
-<style>
+export const SpBtnBaseStyles = css`
   :host {
     --sp_btn-dark-btn-text-color: #FFF;
     --sp_btn-light-btn-text-color: #212121;
@@ -52,56 +51,56 @@ export const SpBtnBaseStyles = html`
     border-radius: 4px;
     padding: 0 16px;
     font-weight: 500;
-    box-shadow: var(${SHADOW_ELEVATIONS.LEVEL_1.BASE});
+    box-shadow: ${SHADOW_ELEVATIONS.LEVEL_1.BASE};
   }
 
   button.sp-btn:hover {
-    box-shadow: var(${SHADOW_ELEVATIONS.LEVEL_1.HOVER});
+    box-shadow: ${SHADOW_ELEVATIONS.LEVEL_1.HOVER};
   }
 
   button.sp-btn:active {
-    box-shadow: var(${SHADOW_ELEVATIONS.LEVEL_1.INSET});
+    box-shadow: ${SHADOW_ELEVATIONS.LEVEL_1.INSET};
   }
 
   button.sp-btn.btn-warning {
-    background-color: var(${BTN_COLORS.WARNING.BACKGROUND_COLOR});
-    color: var(${BTN_COLORS.WARNING.TEXT_COLOR});
+    background-color: ${BTN_COLORS.WARNING.BACKGROUND_COLOR};
+    color: ${BTN_COLORS.WARNING.TEXT_COLOR};
   }
 
   button.sp-btn.btn-warning .button.sp-btn-svg-icon {
-    fill: var(${BTN_COLORS.WARNING.TEXT_COLOR});
+    fill: ${BTN_COLORS.WARNING.TEXT_COLOR};
   }
 
   button.sp-btn.btn-back {
-    background-color: var(${BTN_COLORS.BACK.BACKGROUND_COLOR});
-    color: var(${BTN_COLORS.BACK.TEXT_COLOR});
+    background-color: ${BTN_COLORS.BACK.BACKGROUND_COLOR};
+    color: ${BTN_COLORS.BACK.TEXT_COLOR};
   }
 
   button.sp-btn.btn-back .button.sp-btn-svg-icon {
-    fill: var(${BTN_COLORS.BACK.TEXT_COLOR});
+    fill: ${BTN_COLORS.BACK.TEXT_COLOR};
   }
 
   button.sp-btn.btn-primary {
-    background-color: var(${BTN_COLORS.PRIMARY.BACKGROUND_COLOR});
-    color: var(${BTN_COLORS.PRIMARY.TEXT_COLOR});
+    background-color: ${BTN_COLORS.PRIMARY.BACKGROUND_COLOR};
+    color: ${BTN_COLORS.PRIMARY.TEXT_COLOR};
   }
 
   button.sp-btn.btn-primary .button.sp-btn-svg-icon {
-    fill: var(${BTN_COLORS.PRIMARY.TEXT_COLOR});
+    fill: ${BTN_COLORS.PRIMARY.TEXT_COLOR};
   }
 
   button.sp-btn.btn-secondary {
-    background-color: var(${BTN_COLORS.SECONDARY.BACKGROUND_COLOR});
-    color: var(${BTN_COLORS.SECONDARY.TEXT_COLOR});
+    background-color: ${BTN_COLORS.SECONDARY.BACKGROUND_COLOR};
+    color: ${BTN_COLORS.SECONDARY.TEXT_COLOR};
   }
 
   button.sp-btn.btn-secondary .button.sp-btn-svg-icon {
-    fill: var(${BTN_COLORS.SECONDARY.TEXT_COLOR});
+    fill: ${BTN_COLORS.SECONDARY.TEXT_COLOR};
   }
 
   button.sp-btn[disabled] {
-    background-color: var(${BTN_COLORS.DISABLED.BACKGROUND_COLOR});
-    color: var(${BTN_COLORS.DISABLED.TEXT_COLOR});
+    background-color: ${BTN_COLORS.DISABLED.BACKGROUND_COLOR};
+    color: ${BTN_COLORS.DISABLED.TEXT_COLOR};
     box-shadow: none;
   }
 
@@ -114,7 +113,6 @@ export const SpBtnBaseStyles = html`
   }
 
   button.sp-btn[disabled] .button.sp-btn-svg-icon {
-    fill: var(${BTN_COLORS.DISABLED.TEXT_COLOR});
+    fill: ${BTN_COLORS.DISABLED.TEXT_COLOR};
   }
-</style>
 `;

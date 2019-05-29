@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement, css } from 'lit-element';
 
 import { EditHoverIcon, SaveHoverIcon, CloseHoverIcon } from '../../../../sp_shared/src/entities/sp-icons.js';
 
@@ -13,9 +13,8 @@ export const ITEM_TYPE = {
 
 
 export class SpPageActionItems extends LitElement {
-  render() {
-    return html`
-    <style>
+  static get styles() {
+    return css`
       :host {
         display: flex;
       }
@@ -27,7 +26,11 @@ export class SpPageActionItems extends LitElement {
       sp-icon-btn {
         margin-left: 10px;
       }
-    </style>
+    `;
+  }
+
+  render() {
+    return html`
     ${this._getItemsHtml()}
     `;
   }
@@ -79,4 +82,4 @@ export class SpPageActionItems extends LitElement {
   }
 }
 
-window.customElements.define('sp-page-action-items', SpPageActionItems);
+customElements.define('sp-page-action-items', SpPageActionItems);

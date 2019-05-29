@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement, css } from 'lit-element';
 
 import { localStore } from '../../state/store.js';
 import { showPageMenu } from '../../state/action.js';
@@ -10,9 +10,8 @@ import { MenuIcon } from '../../../../sp_shared/src/entities/sp-icons.js';
 import '../../../../sp_shared/src/components/sp-icon-btn.js';
 
 export class SpPageHeader extends LitElement {
-  render() {
-    return html`
-    <style>
+  static get styles() {
+    return css`
       :host {
         position: fixed;
         left: 0;
@@ -22,18 +21,22 @@ export class SpPageHeader extends LitElement {
         justify-content: space-between;
         align-items: center;
         padding: 0 8px;
-        background-color: var(${APP_COLORS.NEAR_BLACK});
-        color: var(${APP_COLORS.BASE_WHITE});
-        height: var(${NAV.HEADER.HEIGHT});
+        background-color: ${APP_COLORS.NEAR_BLACK};
+        color: ${APP_COLORS.BASE_WHITE};
+        height: ${NAV.HEADER.HEIGHT};
       }
-    </style>
-    <div class="left-items">
-      <sp-page-search></sp-page-search>
-    </div>
-    <div class="right-items">
-      <sp-icon-btn .icon="${MenuIcon}" @click="${() => this._openMenu()}" darkBackground></sp-icon-btn>
-    </div>
-    `
+    `;
+  }
+
+  render() {
+    return html`
+      <div class="left-items">
+        <sp-page-search></sp-page-search>
+      </div>
+      <div class="right-items">
+        <sp-icon-btn .icon="${MenuIcon}" @click="${() => this._openMenu()}" darkBackground></sp-icon-btn>
+      </div>
+    `;
   }
 
   _openMenu() {
@@ -41,4 +44,4 @@ export class SpPageHeader extends LitElement {
   }
 }
 
-window.customElements.define('sp-page-header', SpPageHeader);
+customElements.define('sp-page-header', SpPageHeader);
