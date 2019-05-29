@@ -9,15 +9,15 @@ function _action(type, payload = {}) {
 }
 
 import { importActivePage } from '../services/page-import.js';
-import { getPageFromPath } from '../entities/root.js';
+import { getPageFromPath, getPageIdFromPath } from '../entities/root.js';
 
 export const UPDATE_ACTIVE_PAGE = _createRequestRaw('UPDATE_ACTIVE_PAGE');
-export const updateActivePage = activePage => {
+export const updateActivePage = (activePage, pageId) => {
   importActivePage(activePage);
-  return _action(UPDATE_ACTIVE_PAGE, {activePage})
+  return _action(UPDATE_ACTIVE_PAGE, {activePage, pageId})
 };
 
 export const NAVIGATE = _createRequestRaw('NAVIGATE');
 export const navigate = (path) => (dispatch) => {
-  dispatch(updateActivePage(getPageFromPath(path)));
+  dispatch(updateActivePage(getPageFromPath(path), getPageIdFromPath(path)));
 };

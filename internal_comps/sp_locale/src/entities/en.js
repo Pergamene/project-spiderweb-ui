@@ -8,7 +8,8 @@ export const LOCALE_EN = {
     },
     TITLE: {
       APP_NAME: 'Project Spiderweb',
-      PAGE: 'PAGE',
+      page: (pageId) => `PAGE - ${pageId}`,
+      PAGES: 'PAGES',
       NOT_FOUND: '404 - NOT FOUND'
     }
   },
