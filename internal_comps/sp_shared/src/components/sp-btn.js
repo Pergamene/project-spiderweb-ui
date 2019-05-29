@@ -1,22 +1,24 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { Log } from 'interface-handler/src/logger.js';
 import { BTN_TYPES } from '../entities/sp-btn-types.js';
 import { SpBtnBaseStyles } from '../entities/sp-btn-base-styles.js';
 
 class SpBtn extends LitElement {
+  static get styles() {
+    return [SpBtnBaseStyles, css`
+      .click-propagation-prevention {
+        display: inline;
+      }
+    `];
+  }
+
   render() {
     return html`
-      ${SpBtnBaseStyles}
-      <style>
-        .click-propagation-prevention {
-          display: inline;
-        }
-      </style>
       <div class="click-propagation-prevention" @click="${this._handleDisabledPropogation}">
         <button class="${this._getBtnClass()} sp-btn" ?disabled="${this.disabled}"><slot></slot></button>
       </div>
     `;
-  };
+  }
   
   static get properties() { 
     return {
@@ -54,4 +56,4 @@ class SpBtn extends LitElement {
     }
   }
 }
-window.customElements.define('sp-btn', SpBtn);
+customElements.define('sp-btn', SpBtn);

@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 import { localStore } from '../state/store.js';
 
@@ -10,16 +10,17 @@ import { retrievePage, PAGE_SELECTION_ACTION_EDIT, savePageEdits } from '../stat
 import { Log } from 'interface-handler/src/logger';
 
 class SpPage extends connect(localStore)(LitElement) {
+  static get styles() {
+    return [SpPageStyles, css`
+      :host {
+        height: 100vh;
+        width: 100vw;
+      }
+    `];
+  }
+
   render() {
     return html`
-      ${SpPageStyles}
-      <style>
-        :host {
-          height: 100vh;
-          width: 100vw;
-        }
-      </style>
-      
       ${this._getPageViewHtml()}
       <sp-page-header></sp-page-header>
       <sp-page-action-footer @save-btn-clicked="${() => this._saveEditedPage()}"></sp-page-action-footer>
@@ -82,4 +83,4 @@ class SpPage extends connect(localStore)(LitElement) {
   }
 }
 
-window.customElements.define('sp-page', SpPage);
+customElements.define('sp-page', SpPage);

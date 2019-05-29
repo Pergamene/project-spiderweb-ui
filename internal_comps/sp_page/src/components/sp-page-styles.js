@@ -1,45 +1,36 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 export const NAV = {
   HEADER: {
-    HEIGHT: '--sp_page-nav-header-height'
+    HEIGHT: css`46px`
   },
   FOOTER: {
-    HEIGHT: '--sp_page-nav-footer-height'
+    HEIGHT: css`46px`
   }
 };
 
 export const CONTENT_PANE = {
-  WIDTH: '--sp_page-content-pane-width'
+  WIDTH: css`200px`
 };
 
 export const EDIT_PANE = {
-  WIDTH: '--sp_page-options-pane-width'
+  WIDTH: css`60px`
 };
 
 export const PAGE_PANE = {
-  WIDTH: '--sp_page-page-pane-width'
+  WIDTH: css`600px`
 };
 
-export const SpPageStyles = html`
-<style>
-  :host {
-    --sp_page-nav-header-height: 46px;
-    --sp_page-nav-footer-height: 46px;
-    --sp_page-content-pane-width: 200px;
-    --sp_page-options-pane-width: 60px;
-    --sp_page-page-pane-width: 600px;
-  }
-
+export const SpPageStyles = css`
   [options-pane] {
     display: flex;
-    width: var(${EDIT_PANE.WIDTH});
+    width: ${EDIT_PANE.WIDTH};
     margin-top: 5px;
   }
 
   [page-pane] {
     width: 100%;
-    max-width: var(${PAGE_PANE.WIDTH});
+    max-width: ${PAGE_PANE.WIDTH};
     display: flex;
     flex-direction: column;
   }
@@ -47,5 +38,4 @@ export const SpPageStyles = html`
   [page-pane-section] {
     display: flex;
   }
-</style>
 `;

@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement } from 'lit-element';
 import { LOCALE_EN } from '../../../../sp_locale/src/entities/en.js';
 import { PAGE_SELECTION_ACTION_EDIT } from '../../state/action.js';
 import { Log } from 'interface-handler/src/logger';
@@ -33,4 +33,4 @@ export class SpPageActionSelection extends LitElement {
   }
 }
 
-window.customElements.define('sp-page-action-selection', SpPageActionSelection);
+customElements.define('sp-page-action-selection', SpPageActionSelection);

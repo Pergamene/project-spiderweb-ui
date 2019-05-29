@@ -1,49 +1,51 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement, css } from 'lit-element';
 
 import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values';
 
 export class SpInnerPartition extends LitElement {
+  static get styles() {
+    return css`
+      :host {
+        display: inline;
+      }
+
+      .bold {
+        font-weight: 700;
+      }
+
+      .italics {
+        font-style: italic;
+      }
+
+      a {
+        color: ${APP_COLORS.LINK_BLUE};
+      }
+
+      a:hover {
+        color: ${APP_COLORS.LINK_HOVER};
+      }
+
+      a:visited {
+        color: ${APP_COLORS.LINK_VISITED};
+      }
+
+      .relation {
+        text-decoration: underline;
+        color: ${APP_COLORS.RELATION_PINK};
+      }
+    `;
+  }
+
   render() {
     return html`
-      <style>
-        :host {
-          display: inline;
-        }
-
-        .bold {
-          font-weight: 700;
-        }
-
-        .italics {
-          font-style: italic;
-        }
-
-        a {
-          color: var(${APP_COLORS.LINK_BLUE});
-        }
-
-        a:hover {
-          color: var(${APP_COLORS.LINK_HOVER});
-        }
-
-        a:visited {
-          color: var(${APP_COLORS.LINK_VISITED});
-        }
-
-        .relation {
-          text-decoration: underline;
-          color: var(${APP_COLORS.RELATION_PINK});
-        }
-
-      </style>
       ${this.partitions.map(partition => this._getPartitionHtml(partition))}      
-    `
+    `;
   }
 
   static get properties() { 
     return {
       partitions: { type: Array }
-    }
+    };
   }
 
   _getPartitionHtml(partition) {
@@ -74,4 +76,4 @@ export class SpInnerPartition extends LitElement {
   }
 }
 
-window.customElements.define('sp-inner-partition', SpInnerPartition);
+customElements.define('sp-inner-partition', SpInnerPartition);

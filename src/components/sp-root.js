@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 import { installRouter } from 'pwa-helpers/router.js';
 import { updateMetadata } from 'pwa-helpers/metadata.js';
@@ -11,20 +11,20 @@ import { ROUTES } from '../entities/root.js';
 import { LOCALE_EN } from '../../internal_comps/sp_locale/src/entities/en.js';
 
 import './sp-404.js';
-import { SpSharedStyles } from '../../internal_comps/sp_shared/src/entities/sp-shared-styles.js';
 import { setDefaults } from '../../internal_comps/sp_shared/src/services/interface-state-defaults.js';
 
 class SpRoot extends connect(localStore)(LitElement) {
-  render() {
-    return html`
-    ${SpSharedStyles}
-    <style>
+  static get styles() {
+    return css`
       :host {
         display: block;
       }
-    </style>
-    
-    ${this._activePageHtml()}
+    `;
+  }
+
+  render() {
+    return html`
+      ${this._activePageHtml()}
     `;
   }
 
@@ -78,4 +78,4 @@ class SpRoot extends connect(localStore)(LitElement) {
   }
 }
 
-window.customElements.define('sp-root', SpRoot);
+customElements.define('sp-root', SpRoot);

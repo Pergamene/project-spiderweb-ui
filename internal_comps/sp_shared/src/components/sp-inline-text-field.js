@@ -1,54 +1,57 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { APP_COLORS } from '../entities/sp-shared-style-values';
 
 class SpInlineTextField extends LitElement {
+  static get styles() {
+    return css`
+      :host {
+        margin: 5px 0;
+        display: block;
+      }
+
+      .click-propagation-prevention {
+        display: inline;
+      }
+
+      .width-filler {
+        display: flex;
+      }
+
+      .label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        color: ${APP_COLORS.HINT_GRAY};
+      }
+
+      .field {
+        line-height: 26px;    
+        white-space: pre-wrap;      
+      }
+
+      .field, input {
+        border-radius: 2px;
+        padding: 10px;
+        flex-grow: 1;
+        font-size: 16px;
+        border: 1px solid ${APP_COLORS.NEAR_BLACK};
+      }
+
+      .field:hover, input:hover {
+        background-color: ${APP_COLORS.NEAR_WHITE};
+      }
+
+      .field:focus, input:focus {
+        outline: none !important; /* remove browser default */
+        border-bottom-width: 4px;
+        margin-bottom: -3px; /* to compensate for the change in border width */
+        border: 1px solid ${APP_COLORS.OFF_BLACK};
+        background-color: ${APP_COLORS.NEAR_WHITE_BORDER};
+      }
+    `;
+  }
+
   render() {
     return html`
-      <style>
-        :host {
-          margin: 5px 0;
-          display: block;
-        }
-
-        .click-propagation-prevention {
-          display: inline;
-        }
-
-        .width-filler {
-          display: flex;
-        }
-
-        .label {
-          font-size: 14px;
-          color: var(${APP_COLORS.HINT_GRAY});
-          margin-bottom: 5px;
-        }
-
-        .field {
-          line-height: 26px;    
-          white-space: pre-wrap;      
-        }
-
-        .field, input {
-          border: 1px solid var(${APP_COLORS.NEAR_BLACK});
-          border-radius: 2px;
-          padding: 10px;
-          flex-grow: 1;
-          font-size: 16px;
-        }
-
-        .field:hover, input:hover {
-          background-color: var(${APP_COLORS.NEAR_WHITE});
-        }
-
-        .field:focus, input:focus {
-          outline: none !important; /* remove browser default */
-          border: 1px solid var(${APP_COLORS.OFF_BLACK});
-          border-bottom-width: 4px;
-          margin-bottom: -3px; /* to compensate for the change in border width */
-          background-color: var(${APP_COLORS.NEAR_WHITE_BORDER});
-        }
-      </style>
       <label class="label">${this.label}</label>
       <div class="width-filler click-propagation-prevention" @click="${this._handleDisabledPropogation}">
         ${this._getInputHtml()}
@@ -88,4 +91,4 @@ class SpInlineTextField extends LitElement {
     }
   }
 }
-window.customElements.define('sp-inline-text-field', SpInlineTextField);
+customElements.define('sp-inline-text-field', SpInlineTextField);
