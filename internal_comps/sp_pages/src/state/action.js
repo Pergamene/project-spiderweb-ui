@@ -15,7 +15,7 @@ export const SET_PAGES = _createRequestRaw('SET_PAGES');
 export const setPages = (pages) => _action(SET_PAGES, {pages});
 
 export const retrievePages = () => (dispatch) => {
-  getPages().then(pages => {
+  getPages().then(({pages}) => {
     dispatch(setPages(pages));
   }, err => {
     Log.error(err);
