@@ -1,7 +1,7 @@
 import { INTERFACE_STATE, InterfaceState } from 'interface-handler/src/interface-state.js';
 
-import * as CallHttp from './http/main-mock-interface.js';
-import * as CallMock from './mock/main-htpp-interface.js';
+import * as CallHttp from './http/main-http-interface.js';
+import * as CallMock from './mock/main-mock-interface.js';
 
 export const getPages = () => {
   switch (InterfaceState.get()) {

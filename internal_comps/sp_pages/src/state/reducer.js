@@ -3,7 +3,7 @@ import * as ActionType from './action.js';
 const INITIAL_STATE = {
   ui: {},
   entities: {
-    pages: []
+    pages: null
   }
 };
 
@@ -17,9 +17,9 @@ function _setPages(state, pages) {
   };
 }
 
-export const sp_page = (state = INITIAL_STATE, action) => {
+export const sp_pages = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ActionType.SET_PAGE:
+    case ActionType.SET_PAGES:
       return _setPages(state, action.pages);
     default:
       return state;

@@ -35,6 +35,11 @@ class SpPage extends connect(localStore)(LitElement) {
     }
   }
 
+  constructor() {
+    super();
+    this._retrieveState = true;
+  }
+
   _getPageViewHtml() {
     if (this._page) {
       return html`<sp-page-view .page="${this._page}" .selection="${this._pageSectionSelection}"></sp-page-view>`;
@@ -49,7 +54,8 @@ class SpPage extends connect(localStore)(LitElement) {
     }
     this._page = state.sp_page.entities.page;
     this._pageId = state.root.route.pageId;
-    if (this._pageId && !this._page) {
+    if (this._pageId && this._retrieveState) {
+      this._retrieveState = false;
       localStore.dispatch(retrievePage(this._pageId));
       return;
     }

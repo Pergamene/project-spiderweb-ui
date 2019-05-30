@@ -21,5 +21,5 @@ function _getInitialModel() {
 
 export function initializeModel() {
   let model = _getInitialModel();
-  Model.pages = {...model.pages};
+  Model.pages = [...model.pages];
 }

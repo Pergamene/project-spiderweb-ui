@@ -16,7 +16,7 @@ export const setPages = (pages) => _action(SET_PAGES, {pages});
 
 export const retrievePages = () => (dispatch) => {
   getPages().then(pages => {
-    dispatch(setPage(pages));
+    dispatch(setPages(pages));
   }, err => {
     Log.error(err);
   });
