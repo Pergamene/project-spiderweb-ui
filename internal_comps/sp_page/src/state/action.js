@@ -1,9 +1,9 @@
-import { getPage } from "../services/interface/page.js";
+import { getPage } from "../services/interfaces/main-interface.js";
 import { localStore } from "./store.js";
 import { Log } from 'interface-handler/src/logger.js';
 import { generateMarkdown } from 'sp-markdown-partitioner/src/partitions-to-markdown.js';
 import { generatePartitions } from 'sp-markdown-partitioner/src/markdown-to-partitions.js';
-import { setDetail } from "../services/interface/page.js";
+import { setDetail } from "../services/interfaces/main-interface.js";
 
 const COMPONENT_TAG = 'SP_PAGE';
 
