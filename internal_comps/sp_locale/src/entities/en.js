@@ -20,7 +20,7 @@ export const LOCALE_EN = {
       DONE: 'done'
     },
     OTHER: {
-      
+      CREATE_PAGE: 'create page'
     }
   },
   SP_PAGE_SELECTION: {

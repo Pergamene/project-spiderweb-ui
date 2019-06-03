@@ -1,14 +1,5 @@
 import { css } from 'lit-element';
 
-export const NAV = {
-  HEADER: {
-    HEIGHT: css`46px`
-  },
-  FOOTER: {
-    HEIGHT: css`46px`
-  }
-};
-
 export const CONTENT_PANE = {
   WIDTH: css`200px`
 };

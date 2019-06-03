@@ -3,8 +3,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { localStore } from '../../state/store.js';
 
 import { LOCALE_EN } from '../../../../sp_locale/src/entities/en.js';
-import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
-import { NAV } from '../sp-page-styles.js';
+import { APP_COLORS, COMMON_ELEMENTS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 
 import './sp-page-action-items.js';
 import './sp-page-action-selection.js';
@@ -78,7 +77,7 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
           padding: 0 8px;
           background-color: ${APP_COLORS.NEAR_BLACK};
           color: ${APP_COLORS.BASE_WHITE};
-          height: ${NAV.FOOTER.HEIGHT};
+          height: ${COMMON_ELEMENTS.FOOTER.HEIGHT};
         }
       </style>
       <div class="left-items">

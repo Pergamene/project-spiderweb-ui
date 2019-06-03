@@ -32,7 +32,7 @@ class SpPage extends connect(localStore)(LitElement) {
       _pageId: { type: String },
       _page: { type: Object },
       _pageSectionSelection: { type: String }
-    }
+    };
   }
 
   constructor() {

@@ -1,14 +1,15 @@
+// @TODO: we may want this an sp-page-header to just be one header...not sure.
 import { html, LitElement, css } from 'lit-element';
 
 import { localStore } from '../../state/store.js';
-import { showPageMenu } from '../../state/action.js';
+import { showPagesMenu } from '../../state/action.js';
 
 import { APP_COLORS, COMMON_ELEMENTS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 import { MenuIcon } from '../../../../sp_shared/src/entities/sp-icons.js';
 
 import '../../../../sp_shared/src/components/sp-icon-btn.js';
 
-export class SpPageHeader extends LitElement {
+export class SpPagesHeader extends LitElement {
   static get styles() {
     return css`
       :host {
@@ -39,8 +40,8 @@ export class SpPageHeader extends LitElement {
   }
 
   _openMenu() {
-    localStore.dispatch(showPageMenu());
+    localStore.dispatch(showPagesMenu());
   }
 }
 
-customElements.define('sp-page-header', SpPageHeader);
+customElements.define('sp-pages-header', SpPagesHeader);

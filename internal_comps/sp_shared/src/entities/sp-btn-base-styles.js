@@ -1,44 +1,38 @@
 import { css } from 'lit-element';
 import { SHADOW_ELEVATIONS } from './sp-shared-style-values.js';
 
+const COLORS = {
+  DARK_TEXT_COLOR: css`#FFF`,
+  LIGHT_TEXT_COLOR: css`#212121`
+};
+
 export const BTN_COLORS = {
   PRIMARY: {
-    TEXT_COLOR: '--sp_btn-dark-btn-text-color',
-    BACKGROUND_COLOR: '--sp_btn-primary-background-color'
+    TEXT_COLOR: COLORS.DARK_TEXT_COLOR,
+    BACKGROUND_COLOR: css`#2196F3`
   },
   SECONDARY: {
-    TEXT_COLOR: '--sp_btn-dark-btn-text-color',
-    BACKGROUND_COLOR: '--sp_btn-secondary-background-color'
+    TEXT_COLOR: COLORS.DARK_TEXT_COLOR,
+    BACKGROUND_COLOR: css`#B0BEC5`
   },
   BACK: {
-    TEXT_COLOR: '--sp_btn-dark-btn-text-color',
-    BACKGROUND_COLOR: '--sp_btn-back-background-color'
+    TEXT_COLOR: COLORS.DARK_TEXT_COLOR,
+    BACKGROUND_COLOR: css`#424242`
   },
   WARNING: {
-    TEXT_COLOR: '--sp_btn-dark-btn-text-color',
-    BACKGROUND_COLOR: '--sp_btn-warning-background-color'
+    TEXT_COLOR: COLORS.DARK_TEXT_COLOR,
+    BACKGROUND_COLOR: css`#f44336`
   },
   DISABLED: {
-    TEXT_COLOR: '--sp_btn-disabled-text-color',
-    BACKGROUND_COLOR: '--sp_btn-disabled-background-color'
+    TEXT_COLOR: css`#9E9E9E`,
+    BACKGROUND_COLOR: css`#BDBDBD`
   },
-  DARK_BTN_TEXT_COLOR: '--sp_btn-dark-btn-text-color',
-  LIGHT_BTN_TEXT_COLOR: '--sp_btn-light-btn-text-color'
+  DARK_BTN_TEXT_COLOR: COLORS.DARK_TEXT_COLOR,
+  LIGHT_BTN_TEXT_COLOR: COLORS.LIGHT_TEXT_COLOR
 };
 
 // @NOTE: imported with SpSharedStyles. Do not import otherwise.
 export const SpBtnBaseStyles = css`
-  :host {
-    --sp_btn-dark-btn-text-color: #FFF;
-    --sp_btn-light-btn-text-color: #212121;
-    --sp_btn-warning-background-color: #f44336;
-    --sp_btn-back-background-color: #424242;
-    --sp_btn-primary-background-color: #2196F3;
-    --sp_btn-secondary-background-color: #B0BEC5;
-    --sp_btn-disabled-text-color: #9E9E9E;
-    --sp_btn-disabled-background-color: #BDBDBD;
-  }
-
   button:focus {
     outline: 0;
   }
@@ -46,9 +40,9 @@ export const SpBtnBaseStyles = css`
   button.sp-btn {
     border: none;
     line-height: 40px;
-    font-size: 18px;
+    font-size: 16px;
     text-transform: uppercase;
-    border-radius: 4px;
+    border-radius: 2px;
     padding: 0 16px;
     font-weight: 500;
     box-shadow: ${SHADOW_ELEVATIONS.LEVEL_1.BASE};
