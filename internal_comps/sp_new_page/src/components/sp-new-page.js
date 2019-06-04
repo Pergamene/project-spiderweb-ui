@@ -1,17 +1,17 @@
 import { LitElement, html, css } from 'lit-element';
-import { connect } from 'pwa-helpers/connect-mixin.js';
 import { localStore } from '../state/store.js';
 
-import { retrievePages } from '../state/action.js';
-import './page-sections/sp-pages-header.js';
-import './page-parts/sp-pages-list.js';
+import { createPage } from '../state/action.js';
+import './page-sections/sp-new-page-header.js';
 import { BTN_TYPES } from '../../../sp_shared/src/entities/sp-btn-types.js';
 import '../../../sp_shared/src/components/sp-btn.js';
 import { LOCALE_EN } from '../../../sp_locale/src/entities/en.js';
 import { COMMON_ELEMENTS } from '../../../sp_shared/src/entities/sp-shared-style-values.js';
-import { navigateToNewPage } from '../../../../src/state/action.js';
+import { getNewPageObject } from '../entities/new-page.js';
+import '../../../sp_page/src/components/page-parts/edit/sp-page-summary-edit.js';
+import '../../../sp_page/src/components/page-parts/edit/sp-page-title-edit.js';
 
-class SpPages extends connect(localStore)(LitElement) {
+class SpNewPage extends LitElement {
   static get styles() {
     const PAGE_VIEW_PADDING = css`20px`;
     return css`
@@ -27,7 +27,7 @@ class SpPages extends connect(localStore)(LitElement) {
         height: calc(100vh - ${COMMON_ELEMENTS.HEADER.HEIGHT} - ${COMMON_ELEMENTS.FOOTER.HEIGHT});
       }
 
-      sp-pages-list {
+      sp-new-page-list {
         margin-top: 20px;
       }
     `;
@@ -36,31 +36,28 @@ class SpPages extends connect(localStore)(LitElement) {
   render() {
     return html`
       <div class="page-view">
-        <sp-btn btntype="${BTN_TYPES.GENERIC.PRIMARY}" @click="${() => this._createNewPage()}">${LOCALE_EN.SP_BTN.OTHER.CREATE_PAGE}</sp-btn>
-        <sp-pages-list .pages="${this._pages}"></sp-pages-list>
+        <sp-page-title-edit .page="${this._page}"></sp-page-title-edit>
+        <sp-page-summary-edit .page="${this._page}"></sp-page-summary-edit>
+        <sp-btn btntype="${BTN_TYPES.GENERIC.PRIMARY}" @click="${() => this._createPage()}">${LOCALE_EN.SP_BTN.OTHER.CREATE_PAGE}</sp-btn>
       </div>
-      <sp-pages-header></sp-pages-header>
+      <sp-new-page-header></sp-new-page-header>
     `;
   }
 
   static get properties() { 
     return {
-      _pages: { type: Array }
+      _page: { type: Object }
     };
   }
 
   constructor() {
     super();
-    localStore.dispatch(retrievePages());
+    this._page = getNewPageObject();
   }
 
-  stateChanged(state) {
-    this._pages = state.sp_pages.entities.pages;
-  }
-
-  _createNewPage() {
-    localStore.dispatch(navigateToNewPage());
+  _createPage() {
+    localStore.dispatch(createPage(this._page.title, this._page.summary, this._page.templateId));
   }
 }
 
-customElements.define('sp-pages', SpPages);
+customElements.define('sp-new-page', SpNewPage);

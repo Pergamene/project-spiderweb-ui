@@ -52,8 +52,7 @@ export class SpPagesListItem extends LitElement {
 
   static get properties() { 
     return {
-      page: { type: Object },
-      pageIndex: { type: Number }
+      page: { type: Object }
     };
   }
 

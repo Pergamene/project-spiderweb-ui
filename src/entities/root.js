@@ -2,10 +2,14 @@ export const ROUTES = {
   PAGES: {
     PAGE: 'ROUTE_PAGE_PAGE',
     PAGES: 'ROUTE_PAGE_PAGES',
+    NEW_PAGE: 'ROUTE_PAGE_NEW_PAGE',
     NOT_FOUND: 'ROUTE_PAGE_404'
   },
   ENDPOINTS: {
     PAGES: 'pages'
+  },
+  ACTIONS: {
+    NEW: 'new'
   }
 };
 
@@ -70,6 +74,9 @@ function _getPathParts(path) {
 function _getPageFromEndpoint(endpoint, id) {
   switch (endpoint) {
     case ROUTES.ENDPOINTS.PAGES:
+      if (id === ROUTES.ACTIONS.NEW) {
+        return ROUTES.PAGES.NEW_PAGE;
+      }
       if (id) {
         return ROUTES.PAGES.PAGE;
       }

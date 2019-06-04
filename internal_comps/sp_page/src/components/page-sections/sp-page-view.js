@@ -1,11 +1,11 @@
 import { html, LitElement, css } from 'lit-element';
-import { NAV, CONTENT_PANE, EDIT_PANE, PAGE_PANE } from '../sp-page-styles';
+import { CONTENT_PANE, EDIT_PANE, PAGE_PANE } from '../sp-page-styles.js';
 
 
 import '../page-parts/sp-page-overview.js';
 import '../page-parts/sp-page-properties.js';
 import '../page-parts/sp-page-details.js';
-import { COMMON_ELEMENTS } from '../../../../sp_shared/src/entities/sp-shared-style-values';
+import { COMMON_ELEMENTS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 
 export class SpPageView extends LitElement {
   static get styles() {

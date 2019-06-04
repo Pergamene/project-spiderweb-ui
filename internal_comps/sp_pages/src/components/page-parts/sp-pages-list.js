@@ -2,6 +2,8 @@ import { html, LitElement, css } from 'lit-element';
 
 import './sp-pages-list-item.js';
 import { SHADOW_ELEVATIONS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
+import { navigateToPage } from '../../../../../src/state/action.js';
+import { localStore } from '../../state/store.js';
 
 export class SpPagesList extends LitElement {
   static get styles() {
@@ -43,7 +45,11 @@ export class SpPagesList extends LitElement {
   }
 
   _getPageItemHtml(page, index) {
-    return html`<sp-pages-list-item .page="${page}" .pageIndex="${index}"></sp-pages-list-item>`;
+    return html`<sp-pages-list-item .page="${page}" @click="${() => this._selectPage(page)}"></sp-pages-list-item>`;
+  }
+
+  _selectPage(page) {
+    localStore.dispatch(navigateToPage(page.id));
   }
 }
 

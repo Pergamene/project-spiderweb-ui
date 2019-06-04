@@ -10,7 +10,8 @@ export const LOCALE_EN = {
       APP_NAME: 'Project Spiderweb',
       page: (pageId) => `PAGE - ${pageId}`,
       PAGES: 'PAGES',
-      NOT_FOUND: '404 - NOT FOUND'
+      NOT_FOUND: '404 - NOT FOUND',
+      NEW_PAGE: 'NEW PAGE'
     }
   },
   SP_BTN: {

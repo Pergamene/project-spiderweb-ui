@@ -46,6 +46,8 @@ class SpRoot extends connect(localStore)(LitElement) {
         return html`<sp-page></sp-page>`;
       case ROUTES.PAGES.PAGES:
         return html`<sp-pages></sp-pages>`;
+      case ROUTES.PAGES.NEW_PAGE:
+        return html`<sp-new-page></sp-new-page>`;
     default:
         return html`<sp-404></sp-404>`;
     }
@@ -72,6 +74,8 @@ class SpRoot extends connect(localStore)(LitElement) {
           return `${title} | ${LOCALE_EN.SP_ROOT.TITLE.PAGES}`;
       case ROUTES.PAGES.NOT_FOUND:
         return `${title} | ${LOCALE_EN.SP_ROOT.TITLE.NOT_FOUND}`;
+      case ROUTES.PAGES.NEW_PAGE:
+        return `${title} | ${LOCALE_EN.SP_ROOT.TITLE.NEW_PAGE}`;        
       default:
         Log.error(`Unexpected page: ${this._page}`);
         return title;
