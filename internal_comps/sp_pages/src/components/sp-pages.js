@@ -3,13 +3,14 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { localStore } from '../state/store.js';
 
 import { retrievePages } from '../state/action.js';
-import './page-sections/sp-pages-header.js';
 import './page-parts/sp-pages-list.js';
 import { BTN_TYPES } from '../../../sp_shared/src/entities/sp-btn-types.js';
 import '../../../sp_shared/src/components/sp-btn.js';
 import { LOCALE_EN } from '../../../sp_locale/src/entities/en.js';
 import { COMMON_ELEMENTS } from '../../../sp_shared/src/entities/sp-shared-style-values.js';
 import { navigateToNewPage } from '../../../../src/state/action.js';
+import '../../../sp_shared/src/components/sp-header.js';
+import { getPageDrawerItems } from '../../../sp_page_shared/src/entities/page-drawer-items.js';
 
 class SpPages extends connect(localStore)(LitElement) {
   static get styles() {
@@ -39,7 +40,7 @@ class SpPages extends connect(localStore)(LitElement) {
         <sp-btn btntype="${BTN_TYPES.GENERIC.PRIMARY}" @click="${() => this._createNewPage()}">${LOCALE_EN.SP_BTN.OTHER.CREATE_PAGE}</sp-btn>
         <sp-pages-list .pages="${this._pages}"></sp-pages-list>
       </div>
-      <sp-pages-header></sp-pages-header>
+      <sp-header .drawerItems="${getPageDrawerItems()}"></sp-header>
     `;
   }
 

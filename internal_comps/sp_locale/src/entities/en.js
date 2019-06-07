@@ -50,6 +50,12 @@ export const LOCALE_EN = {
     DETAIL_MARKDOWN: {
       LABEL: 'Detail Markdown'
     }
+  },
+  SP_PAGE_SHARED: {
+    DRAWER: {
+      CREATE_PAGE: 'Create Page',
+      VIEW_PAGES: 'View Pages'
+    }
   }
 };
 

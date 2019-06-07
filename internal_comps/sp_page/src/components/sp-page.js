@@ -2,12 +2,13 @@ import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 import { localStore } from '../state/store.js';
 
-import './page-sections/sp-page-header.js';
 import './page-sections/sp-page-view.js';
 import './page-action/sp-page-action-footer.js';
 import { SpPageStyles } from './sp-page-styles.js';
 import { retrievePage, PAGE_SELECTION_ACTION_EDIT, savePageEdits } from '../state/action.js';
 import { Log } from 'interface-handler/src/logger';
+import '../../../sp_shared/src/components/sp-header.js';
+import { getPageDrawerItems } from '../../../sp_page_shared/src/entities/page-drawer-items.js';
 
 class SpPage extends connect(localStore)(LitElement) {
   static get styles() {
@@ -22,7 +23,7 @@ class SpPage extends connect(localStore)(LitElement) {
   render() {
     return html`
       ${this._getPageViewHtml()}
-      <sp-page-header></sp-page-header>
+      <sp-header .drawerItems="${getPageDrawerItems()}"></sp-header>
       <sp-page-action-footer @save-btn-clicked="${() => this._saveEditedPage()}"></sp-page-action-footer>
     `;
   }

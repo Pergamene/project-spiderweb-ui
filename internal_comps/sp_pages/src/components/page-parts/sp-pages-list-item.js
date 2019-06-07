@@ -11,9 +11,11 @@ export class SpPagesListItem extends LitElement {
         display: flex;
         align-items: center;
         border-radius: 2px;
+        max-width: 800px;
       }
 
       .page-icon {
+        height: 24px; /* @NOTE: this is because the icons are stubborn and are setting height to 28px for no reason */
         margin-left: 10px;
       }
 

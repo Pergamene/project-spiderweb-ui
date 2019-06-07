@@ -7,9 +7,13 @@ export function DownHoverIcon(customClass) { return getBaseSvg(customClass, 'dow
 export function CloseHoverIcon(customClass) { return getBaseSvg(customClass, 'close-hover-svg-icon', svg`<path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>`) }
 export function SaveHoverIcon(customClass) { return getBaseSvg(customClass, 'save-hover-svg-icon', svg`<path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />`) }
 
+// DRAWER ICONS
+export function ViewPagesIcon(customClass) { return getBaseSvg(customClass, 'view-pages-svg-icon', svg`<path d="M16 15H9v-2h7v2m3-4H9V9h10v2m0-4H9V5h10v2M3 5v16h16v2H3a2 2 0 0 1-2-2V5h2m18-4a2 2 0 0 1 2 2v14c0 1.11-.89 2-2 2H7a2 2 0 0 1-2-2V3c0-1.11.89-2 2-2h14M7 3v14h14V3H7z"/>`) }
+export function CreatePageIcon(customClass) { return getBaseSvg(customClass, 'create-page-svg-icon', svg`<path d="M17 14h2v3h3v2h-3v3h-2v-3h-3v-2h3v-3M5 3h14c1.11 0 2 .89 2 2v7.8c-.61-.35-1.28-.6-2-.72V5H5v14h7.08c.12.72.37 1.39.72 2H5c-1.11 0-2-.89-2-2V5c0-1.11.89-2 2-2m2 4h10v2H7V7m0 4h10v1.08c-.85.14-1.63.46-2.32.92H7v-2m0 4h5v2H7v-2z"/>`) }
+
 
 // PAGE ICONS
-export function UndefinedPageIcon(customClass) { return getBaseSvg(customClass, 'undefined-page-svg-icon', svg`<path d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6M6,4H13V9H18V20H6V4M8,12V14H16V12H8M8,16V18H13V16H8Z"/>`) }
+export function UndefinedPageIcon(customClass) { return getBaseSvg(customClass, 'undefined-page-svg-icon', svg`<path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7z"/>`) }
 
 function getBaseSvg(customClass, definedClass, svgContent) {
   const classes = [definedClass, customClass].join(' ');

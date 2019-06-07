@@ -2,7 +2,6 @@ import { LitElement, html, css } from 'lit-element';
 import { localStore } from '../state/store.js';
 
 import { createPage } from '../state/action.js';
-import './page-sections/sp-new-page-header.js';
 import { BTN_TYPES } from '../../../sp_shared/src/entities/sp-btn-types.js';
 import '../../../sp_shared/src/components/sp-btn.js';
 import { LOCALE_EN } from '../../../sp_locale/src/entities/en.js';
@@ -10,6 +9,8 @@ import { COMMON_ELEMENTS } from '../../../sp_shared/src/entities/sp-shared-style
 import { getNewPageObject } from '../entities/new-page.js';
 import '../../../sp_page/src/components/page-parts/edit/sp-page-summary-edit.js';
 import '../../../sp_page/src/components/page-parts/edit/sp-page-title-edit.js';
+import '../../../sp_shared/src/components/sp-header.js';
+import { getPageDrawerItems } from '../../../sp_page_shared/src/entities/page-drawer-items.js';
 
 class SpNewPage extends LitElement {
   static get styles() {
@@ -40,7 +41,7 @@ class SpNewPage extends LitElement {
         <sp-page-summary-edit .page="${this._page}"></sp-page-summary-edit>
         <sp-btn btntype="${BTN_TYPES.GENERIC.PRIMARY}" @click="${() => this._createPage()}">${LOCALE_EN.SP_BTN.OTHER.CREATE_PAGE}</sp-btn>
       </div>
-      <sp-new-page-header></sp-new-page-header>
+      <sp-header .drawerItems="${getPageDrawerItems()}"></sp-header>
     `;
   }
 
