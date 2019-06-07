@@ -34,3 +34,7 @@ const _handleNavigation = (path) => (dispatch) => {
 export const navigateToNewPage = () => (dispatch) => {
   dispatch(_handleNavigation(`/pages/${ROUTES.ACTIONS.NEW}`));
 }
+
+export const navigateToPagesOverview = () => (dispatch) => {
+  dispatch(_handleNavigation(`/pages`));
+}

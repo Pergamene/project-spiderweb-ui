@@ -1,7 +1,7 @@
 import { html, LitElement, css } from 'lit-element';
 
 import './sp-pages-list-item.js';
-import { SHADOW_ELEVATIONS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
+import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 import { navigateToPage } from '../../../../../src/state/action.js';
 import { localStore } from '../../state/store.js';
 
@@ -19,15 +19,15 @@ export class SpPagesList extends LitElement {
       sp-pages-list-item {
         margin-top: 10px;
         cursor: pointer;
-        box-shadow: ${SHADOW_ELEVATIONS.LEVEL_1.BASE};
+        border: 1px solid ${APP_COLORS.NEAR_WHITE_BORDER};
       }
 
       sp-pages-list-item:hover {
-        box-shadow: ${SHADOW_ELEVATIONS.LEVEL_1.HOVER};
+        background-color: ${APP_COLORS.BASE_WHITE_FOCUS};
       }
 
       sp-pages-list-item:active {
-        box-shadow: ${SHADOW_ELEVATIONS.LEVEL_1.INSET};
+        background-color: ${APP_COLORS.BASE_WHITE_FOCUS};
       }
     `;
   }

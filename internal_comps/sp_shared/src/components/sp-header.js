@@ -3,6 +3,8 @@ import { html, LitElement, css } from 'lit-element';
 import { APP_COLORS, COMMON_ELEMENTS } from '../entities/sp-shared-style-values.js';
 import { MenuIcon, SpIconsStyles } from '../entities/sp-icons.js';
 
+import { localStore } from '../state/store.js';
+
 import '../components/sp-icon-btn.js';
 
 export class SpHeader extends LitElement {
@@ -24,8 +26,8 @@ export class SpHeader extends LitElement {
 
       .drawer {
         position: fixed;
-        width: 200px;
-        padding: 20px 10px;
+        width: 240px;
+        padding: 20px 0;
         right: 0;
         top: ${COMMON_ELEMENTS.HEADER.HEIGHT};
         height: calc(100vh - ${COMMON_ELEMENTS.HEADER.HEIGHT});
@@ -37,14 +39,10 @@ export class SpHeader extends LitElement {
         fill: ${APP_COLORS.BASE_WHITE};
       }
 
-      .drawer-item:first-child {
-        margin-top: 0;
-      }
-
       .drawer-item {
         display: flex;
         align-items: center;
-        margin-top: 24px;
+        padding: 12px 20px;
       }
 
       .drawer-item-icon {
@@ -60,6 +58,14 @@ export class SpHeader extends LitElement {
       .drawer-item-text {
         font-weight: 500;
       }
+
+      .drawer-item:hover {
+        background-color: ${APP_COLORS.NEAR_BLACK_FOCUS};
+      }
+
+      .drawer-item:active {
+        background-color: ${APP_COLORS.NEAR_BLACK_FOCUS};
+      }
     `];
   }
 
@@ -70,7 +76,7 @@ export class SpHeader extends LitElement {
           <slot></slot>
         </div>
         <div class="right-items">
-          <sp-icon-btn .icon="${MenuIcon}" @click="${() => this._toggleDrawer()}" darkBackground></sp-icon-btn>
+          <sp-icon-btn .icon="${MenuIcon}" @click="${this._toggleDrawer}" darkBackground></sp-icon-btn>
         </div>
       </header>
       ${this._drawerHtml()}
@@ -84,8 +90,9 @@ export class SpHeader extends LitElement {
     };
   }
 
-  _toggleDrawer() {
+  _toggleDrawer(e) {
     this.drawerOpen = !this.drawerOpen;
+    e.stopPropagation();
   }
 
   _drawerHtml() {
@@ -105,14 +112,14 @@ export class SpHeader extends LitElement {
       // @NOTE: classMap would be the better option, but it's not working: https://lit-html.polymer-project.org/guide/template-reference#classmap
       if (drawerItem.dispatchAction) {
         items.push(html`
-          <div class="drawer-item drawer-item-clickable">
+          <div class="drawer-item drawer-item-clickable" @click="${this._handleDrawerItemClick(drawerItem)}">
             <div class="drawer-item-icon">${drawerItem.iconFunc()}</div>
             <div class="drawer-item-text">${drawerItem.text}</div>
           </div>
         `);
       } else {
         items.push(html`
-          <div class="drawer-item">
+          <div class="drawer-item"  @click="${this._handleDrawerItemClick(drawerItem)}">
             <div class="drawer-item-icon">${drawerItem.iconFunc()}</div>
             <div class="drawer-item-text">${drawerItem.text}</div>
           </div>
@@ -120,6 +127,11 @@ export class SpHeader extends LitElement {
       }
     }
     return items;
+  }
+
+  _handleDrawerItemClick(drawerItem) {
+    debugger;
+    localStore.dispatch(drawerItem.dispatchAction);
   }
 }
 
