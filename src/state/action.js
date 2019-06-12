@@ -17,7 +17,6 @@ export const updateActivePage = (activePage, pageId) => {
   return _action(UPDATE_ACTIVE_PAGE, {activePage, pageId})
 };
 
-export const NAVIGATE = _createRequestRaw('NAVIGATE');
 export const navigate = (path) => (dispatch) => {
   dispatch(updateActivePage(getPageFromPath(path), getPageIdFromPath(path)));
 };

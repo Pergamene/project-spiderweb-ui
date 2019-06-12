@@ -76,7 +76,7 @@ export class SpHeader extends LitElement {
           <slot></slot>
         </div>
         <div class="right-items">
-          <sp-icon-btn .icon="${MenuIcon}" @click="${this._toggleDrawer}" darkBackground></sp-icon-btn>
+          <sp-icon-btn .icon="${MenuIcon}" @click="${() => this._toggleDrawer()}" darkBackground></sp-icon-btn>
         </div>
       </header>
       ${this._drawerHtml()}
@@ -90,9 +90,8 @@ export class SpHeader extends LitElement {
     };
   }
 
-  _toggleDrawer(e) {
+  _toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
-    e.stopPropagation();
   }
 
   _drawerHtml() {
@@ -112,14 +111,14 @@ export class SpHeader extends LitElement {
       // @NOTE: classMap would be the better option, but it's not working: https://lit-html.polymer-project.org/guide/template-reference#classmap
       if (drawerItem.dispatchAction) {
         items.push(html`
-          <div class="drawer-item drawer-item-clickable" @click="${this._handleDrawerItemClick(drawerItem)}">
+          <div class="drawer-item drawer-item-clickable" @click="${() => this._handleDrawerItemClick(drawerItem)}">
             <div class="drawer-item-icon">${drawerItem.iconFunc()}</div>
             <div class="drawer-item-text">${drawerItem.text}</div>
           </div>
         `);
       } else {
         items.push(html`
-          <div class="drawer-item"  @click="${this._handleDrawerItemClick(drawerItem)}">
+          <div class="drawer-item">
             <div class="drawer-item-icon">${drawerItem.iconFunc()}</div>
             <div class="drawer-item-text">${drawerItem.text}</div>
           </div>
@@ -130,7 +129,6 @@ export class SpHeader extends LitElement {
   }
 
   _handleDrawerItemClick(drawerItem) {
-    debugger;
     localStore.dispatch(drawerItem.dispatchAction);
   }
 }

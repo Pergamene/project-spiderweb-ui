@@ -7,7 +7,7 @@ export const createPage = (title, summary, templateId) => {
     body = {
       title,
       summary,
-      templateId
+      'pageTemplateId': templateId
     };
     Http.post(`api/pages`, headers, null, body).then(data => {
       resolve(data.result.id);

@@ -38,5 +38,8 @@ export const COMMON_ELEMENTS = {
   },
   FOOTER: {
     HEIGHT: css`46px`
+  },
+  MAIN_PANE: {
+    WIDTH: css`600px`
   }
 };

@@ -1,5 +1,5 @@
 import { html, LitElement, css } from 'lit-element';
-import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values';
+import { APP_COLORS, COMMON_ELEMENTS } from '../../../../sp_shared/src/entities/sp-shared-style-values';
 import { UndefinedPageIcon, SpIconsStyles } from '../../../../sp_shared/src/entities/sp-icons';
 
 export class SpPagesListItem extends LitElement {
@@ -11,7 +11,7 @@ export class SpPagesListItem extends LitElement {
         display: flex;
         align-items: center;
         border-radius: 2px;
-        max-width: 800px;
+        max-width: ${COMMON_ELEMENTS.MAIN_PANE.WIDTH};
       }
 
       .page-icon {
