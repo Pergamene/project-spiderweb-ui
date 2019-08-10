@@ -57,7 +57,6 @@ class SpNewPage extends LitElement {
   }
 
   _createPage() {
-    debugger;
     localStore.dispatch(createPage(this._page.title, this._page.summary, this._page.templateId));
   }
 }
