@@ -1,9 +1,11 @@
 import { html, LitElement, css } from 'lit-element';
-import { NAV, CONTENT_PANE, EDIT_PANE, PAGE_PANE } from '../sp-page-styles';
+import { CONTENT_PANE, EDIT_PANE, PAGE_PANE } from '../sp-page-styles.js';
+
 
 import '../page-parts/sp-page-overview.js';
 import '../page-parts/sp-page-properties.js';
 import '../page-parts/sp-page-details.js';
+import { COMMON_ELEMENTS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 
 export class SpPageView extends LitElement {
   static get styles() {
@@ -12,15 +14,15 @@ export class SpPageView extends LitElement {
         display: flex;
         width: 100vw;
         justify-content: center;
-        margin-top: ${NAV.HEADER.HEIGHT};
-        height: calc(100vh - ${NAV.HEADER.HEIGHT} - ${NAV.FOOTER.HEIGHT});
+        margin-top: ${COMMON_ELEMENTS.HEADER.HEIGHT};
+        height: calc(100vh - ${COMMON_ELEMENTS.HEADER.HEIGHT} - ${COMMON_ELEMENTS.FOOTER.HEIGHT});
       }
 
       .left-column {
         display: flex;
         flex-direction: column;
         width: ${CONTENT_PANE.WIDTH};
-        height: calc(100vh - ${NAV.HEADER.HEIGHT} - ${NAV.FOOTER.HEIGHT});
+        height: calc(100vh - ${COMMON_ELEMENTS.HEADER.HEIGHT} - ${COMMON_ELEMENTS.FOOTER.HEIGHT});
       }
 
       .right-column {

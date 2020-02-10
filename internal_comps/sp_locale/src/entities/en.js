@@ -8,8 +8,10 @@ export const LOCALE_EN = {
     },
     TITLE: {
       APP_NAME: 'Project Spiderweb',
-      PAGE: 'PAGE',
-      NOT_FOUND: '404 - NOT FOUND'
+      page: (pageId) => `PAGE - ${pageId}`,
+      PAGES: 'PAGES',
+      NOT_FOUND: '404 - NOT FOUND',
+      NEW_PAGE: 'NEW PAGE'
     }
   },
   SP_BTN: {
@@ -19,7 +21,7 @@ export const LOCALE_EN = {
       DONE: 'done'
     },
     OTHER: {
-      
+      CREATE_PAGE: 'create page'
     }
   },
   SP_PAGE_SELECTION: {
@@ -47,6 +49,12 @@ export const LOCALE_EN = {
     },
     DETAIL_MARKDOWN: {
       LABEL: 'Detail Markdown'
+    }
+  },
+  SP_PAGE_SHARED: {
+    DRAWER: {
+      CREATE_PAGE: 'Create Page',
+      VIEW_PAGES: 'View Pages'
     }
   }
 };

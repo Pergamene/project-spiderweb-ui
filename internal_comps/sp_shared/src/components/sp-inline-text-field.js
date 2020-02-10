@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import { APP_COLORS } from '../entities/sp-shared-style-values';
+import { APP_COLORS, COMMON_ELEMENTS } from '../entities/sp-shared-style-values';
 
 class SpInlineTextField extends LitElement {
   static get styles() {
@@ -7,6 +7,7 @@ class SpInlineTextField extends LitElement {
       :host {
         margin: 5px 0;
         display: block;
+        max-width: ${COMMON_ELEMENTS.MAIN_PANE.WIDTH};
       }
 
       .click-propagation-prevention {

@@ -9,10 +9,6 @@ class SpIconBtn extends LitElement {
         display: inline;
       }
 
-      button {
-        transition: background-color 0.2s;
-      }
-
       button.sp-icon-btn {
         border: none;
         width: 40px;
@@ -22,9 +18,10 @@ class SpIconBtn extends LitElement {
         align-items: center;
         justify-content: center;
         background: none;
+        transition: background-color 0.2s;
       }
 
-      button:focus {
+      button.sp-icon-btn:focus {
         outline: 0;
       }
     `];
@@ -33,11 +30,20 @@ class SpIconBtn extends LitElement {
   render() {
     return html`
       <style>
-        .sp-icon-btn [svg-icon] {
-          fill: ${this._getBtnFillColor()};
+        button.sp-icon-btn [svg-icon] {
+          fill: ${this._getBtnIconFillColor()};
         }
-        button:focus {
-          background-color: ${this._getBtnFocusBackgroundColor()};
+
+        button.sp-icon-btn:focus {
+          background-color: ${this._getBtnFocusBackgroundColor()} !important;
+        }
+
+        button.sp-icon-btn:focus [svg-icon] {
+          fill: ${this._getBtnIconFocusFillColor()} !important;
+        }
+
+        button.sp-icon-btn:hover [svg-icon] {
+          fill: ${this._getBtnIconHoverFillColor()} !important;
         }
       </style>
       <div class="click-propagation-prevention" @click="${this._handleDisabledPropogation}">
@@ -50,6 +56,7 @@ class SpIconBtn extends LitElement {
     return {
       icon: { type: Function },
       darkBackground: { type: Boolean },
+      subtleHover: { type: Boolean },
       disabled: { type: Boolean }
     };
   }
@@ -66,18 +73,46 @@ class SpIconBtn extends LitElement {
     return this.icon();
   }
 
-  _getBtnFillColor() {
+  _getBtnIconFillColor() {
     if (this.darkBackground) {
-      return html`${APP_COLORS.BASE_WHITE}`;
+      if (this.subtleHover) {
+        return css`${APP_COLORS.NEAR_BLACK_FOCUS}`;
+      }
+      return css`${APP_COLORS.BASE_WHITE}`;
     }
-    return html`${APP_COLORS.NEAR_BLACK}`;
+    if (this.subtleHover) {
+      return css`${APP_COLORS.BASE_WHITE_FOCUS}`;
+    }
+    return css`${APP_COLORS.NEAR_BLACK}`;
   }
 
   _getBtnFocusBackgroundColor() {
     if (this.darkBackground) {
-      return html`${APP_COLORS.NEAR_BLACK_FOCUS}`;
+      return css`${APP_COLORS.NEAR_BLACK_FOCUS}`;
     }
-    return html`${APP_COLORS.BASE_WHITE_FOCUS}`;
+    return css`${APP_COLORS.BASE_WHITE_FOCUS}`;
+  }
+
+  _getBtnIconFocusFillColor() {
+    if (!this.subtleHover) {
+      return css``;
+    }
+    if (this.darkBackground) {
+      console.trace('@TODO: not finished');
+      return css``;
+    }
+    return css`${APP_COLORS.HINT_GRAY}`;
+  }
+
+  _getBtnIconHoverFillColor() {
+    if (!this.subtleHover) {
+      return css``;
+    }
+    if (this.darkBackground) {
+      console.trace('@TODO: not finished');
+      return css``;
+    }
+    return css`${APP_COLORS.HINT_GRAY}`;
   }
 }
 customElements.define('sp-icon-btn', SpIconBtn);

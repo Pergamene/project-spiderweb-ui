@@ -19,8 +19,9 @@ You can read more about our permissions at https://choosealicense.com/no-permiss
 ### Setup
 
 ```
-git clone https://github.com/Pergamene/project-spiderweb
-cd project-spiderweb
+git clone https://github.com/Pergamene/project-spiderweb-ui
+cd project-spiderweb-ui
+nvm use
 npm install
 npm start
 ```

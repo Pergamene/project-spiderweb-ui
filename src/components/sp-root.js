@@ -28,9 +28,10 @@ class SpRoot extends connect(localStore)(LitElement) {
     `;
   }
 
-  static get properties() {
+  static get properties() { 
     return {
-      _page: { type: String }
+      _pageId: { type: String },
+      _page: { type: Object }
     }
   }
 
@@ -43,6 +44,10 @@ class SpRoot extends connect(localStore)(LitElement) {
     switch (this._page) {
       case ROUTES.PAGES.PAGE:
         return html`<sp-page></sp-page>`;
+      case ROUTES.PAGES.PAGES:
+        return html`<sp-pages></sp-pages>`;
+      case ROUTES.PAGES.NEW_PAGE:
+        return html`<sp-new-page></sp-new-page>`;
     default:
         return html`<sp-404></sp-404>`;
     }
@@ -55,26 +60,31 @@ class SpRoot extends connect(localStore)(LitElement) {
   updated(changedProps) {
     if (changedProps.has('_page')) {      
       updateMetadata({
-        title: this._getPageTitle(this._page)
+        title: this._getPageTitle()
       });
     }
   }
 
-  _getPageTitle(page) {
+  _getPageTitle() {
     const title = LOCALE_EN.SP_ROOT.TITLE.APP_NAME;
-    switch (page) {
+    switch (this._page) {
       case ROUTES.PAGES.PAGE:
-        return `${title} | ${LOCALE_EN.SP_ROOT.TITLE.PAGE}`;
+        return `${title} | ${LOCALE_EN.SP_ROOT.TITLE.page(this._pageId)}`;
+      case ROUTES.PAGES.PAGES:
+          return `${title} | ${LOCALE_EN.SP_ROOT.TITLE.PAGES}`;
       case ROUTES.PAGES.NOT_FOUND:
         return `${title} | ${LOCALE_EN.SP_ROOT.TITLE.NOT_FOUND}`;
+      case ROUTES.PAGES.NEW_PAGE:
+        return `${title} | ${LOCALE_EN.SP_ROOT.TITLE.NEW_PAGE}`;        
       default:
-        Log.error(`Unexpected page: ${page}`);
+        Log.error(`Unexpected page: ${this._page}`);
         return title;
     }
   }
 
   stateChanged(state) {
     this._page = state.root.route.activePage;
+    this._pageId = state.root.route.pageId;
   }
 }
 

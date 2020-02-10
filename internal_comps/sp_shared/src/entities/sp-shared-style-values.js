@@ -31,3 +31,15 @@ export const SHADOW_ELEVATIONS = {
     BASE: css`-2px 0px 10px rgba(0, 0, 0, 0.1)`
   }
 };
+
+export const COMMON_ELEMENTS = {
+  HEADER: {
+    HEIGHT: css`46px`
+  },
+  FOOTER: {
+    HEIGHT: css`46px`
+  },
+  MAIN_PANE: {
+    WIDTH: css`600px`
+  }
+};

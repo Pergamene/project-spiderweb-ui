@@ -3,8 +3,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { localStore } from '../../state/store.js';
 
 import { LOCALE_EN } from '../../../../sp_locale/src/entities/en.js';
-import { APP_COLORS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
-import { NAV } from '../sp-page-styles.js';
+import { APP_COLORS, COMMON_ELEMENTS } from '../../../../sp_shared/src/entities/sp-shared-style-values.js';
 
 import './sp-page-action-items.js';
 import './sp-page-action-selection.js';
@@ -13,24 +12,6 @@ import { editPageSelection, PAGE_SELECTION_ACTION_EDIT, savePageEdits, cancelPag
 import { ITEM_TYPE } from './sp-page-action-items.js';
 
 export class SpPageActionFooter extends connect(localStore)(LitElement) {
-  static get styles() {
-    return css`
-      :host {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 8px;
-        background-color: ${APP_COLORS.NEAR_BLACK};
-        color: ${APP_COLORS.BASE_WHITE};
-        height: ${NAV.FOOTER.HEIGHT};
-      }
-    `;
-  }
-
   render() {
     return this._getHtml();
   }
@@ -49,7 +30,7 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
       this._selectionName = null;
     } else {
       this._selectionName = this._getSectionName(pageSectionSelection.type);
-    } 
+    }
     this._selectionActionItems = this._getSelectionActionItems(pageSectionSelection.action);
     this._selectionAction = pageSectionSelection.action;
   }
@@ -84,6 +65,21 @@ export class SpPageActionFooter extends connect(localStore)(LitElement) {
       return html``;
     }
     return html`
+      <style>
+        :host {
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 8px;
+          background-color: ${APP_COLORS.NEAR_BLACK};
+          color: ${APP_COLORS.BASE_WHITE};
+          height: ${COMMON_ELEMENTS.FOOTER.HEIGHT};
+        }
+      </style>
       <div class="left-items">
         <sp-page-action-selection .name="${this._selectionName}" .action="${this._selectionAction}"></sp-page-action-selection>
       </div>

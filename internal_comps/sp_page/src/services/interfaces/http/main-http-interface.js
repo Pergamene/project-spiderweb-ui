@@ -7,7 +7,6 @@ export const getPage = (pageId) => {
     Http.get(`api/pages/${pageId}`, headers).then(data => {
       resolve(data.result);
     }, err => {
-      console.error(err);
       reject(err);
     });
   });
@@ -19,7 +18,6 @@ export const setDetail = (pageId, detailId, detail) => {
     Http.put(`api/pages/${pageId}/details/${detailId}`, headers, detail).then(data => {
       resolve(data.result);
     }, err => {
-      console.error(err);
       reject(err);
     });
   });

@@ -224,6 +224,13 @@ function _getInitialModel() {
             ]
           }
         ]
+      },
+      'PG_123456789013': {
+        id: 'PG_123456789013',
+        title: 'New Page',
+        summary: 'New Summary.',
+        properties: [],
+        details: []
       }
     }
   };
